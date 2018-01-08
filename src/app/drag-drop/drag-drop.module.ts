@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { DragDropComponent } from './drag-drop.component';
+
 import { DragDropRoutingModule } from './drag-drop-routing.module';
+import { SharedModule } from './../shared/shared.module';
+
+import { DragDropComponent } from './drag-drop.component';
 
 @NgModule({
   imports: [
-    DragDropRoutingModule
+    DragDropRoutingModule,
+    SharedModule
   ],
   declarations: [DragDropComponent]
 })

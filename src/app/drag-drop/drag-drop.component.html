@@ -1,3 +1,11 @@
-<p>
-  drag-drop works!
-</p>
+<gridster [options]="options">
+  <gridster-item [item]="item" *ngFor="let item of dashboard">
+    <button (click)="removeItem($event, item)">
+      delete
+    </button>
+  </gridster-item>
+
+</gridster>
+<button (click)="addItem()">
+  add
+</button>
