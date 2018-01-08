@@ -11,6 +11,7 @@ export class DragDropComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<Object>;
   showDialog = false;
+  private bodyText: string;
 
   static eventStop(item, scope) {
     console.info('eventStop', item, scope);
@@ -29,6 +30,8 @@ export class DragDropComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bodyText="abc";
+
     this.options = {
       gridType: 'fit',
       compactUp: false,
@@ -62,9 +65,6 @@ export class DragDropComponent implements OnInit {
 
     this.dashboard = [
       {cols: 1, rows: 1, y: 0, x: 0},
-      {cols: 2, rows: 2, y: 0, x: 2},
-      {cols: 1, rows: 1, y: 0, x: 4},
-      {cols: 1, rows: 1, y: 0, x: 5},
       {cols: 1, rows: 1, y: 10, x: 10}
     ];
   }

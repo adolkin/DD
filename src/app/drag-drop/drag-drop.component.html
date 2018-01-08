@@ -6,6 +6,7 @@
     <button (click)="showDialog = !showDialog" class="btn btn-primary btn-xs">
       edit
     </button>
+    <div [innerHTML]="bodyText"></div>
   </gridster-item>
 
 </gridster>
@@ -14,6 +15,5 @@
 </button>
 
 <app-modal [(visible)]="showDialog">
-  <h1>Hello World</h1>
-  <button (click)="showDialog = !showDialog" class="btn">Close</button>
+  <textarea [(ngModel)]="bodyText"></textarea>
 </app-modal>
