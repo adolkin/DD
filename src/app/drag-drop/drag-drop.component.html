@@ -1,14 +1,19 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of dashboard">
-    <button (click)="removeItem($event, item)">
+    <button (click)="removeItem($event, item)" class="btn btn-primary btn-xs">
       delete
     </button>
-    <button>
+    <button (click)="showDialog = !showDialog" class="btn btn-primary btn-xs">
       edit
     </button>
   </gridster-item>
 
 </gridster>
-<button (click)="addItem()">
+<button (click)="addItem()" class="btn btn-primary">
   add
 </button>
+
+<app-modal [(visible)]="showDialog">
+  <h1>Hello World</h1>
+  <button (click)="showDialog = !showDialog" class="btn">Close</button>
+</app-modal>

@@ -10,6 +10,7 @@ export class DragDropComponent implements OnInit {
 
   options: GridsterConfig;
   dashboard: Array<Object>;
+  showDialog = false;
 
   static eventStop(item, scope) {
     console.info('eventStop', item, scope);
