@@ -3,11 +3,14 @@ app-drag-drop {
   height: 100%;
 }
 
-.gridster-item-content{
+.gridster-item-content {
   height: 100%;
-  width:100%;
+  width: 100%;
 }
- textarea {
-   height: 90%;
-   width: 90%;
- }
+
+textarea {
+  margin-top: 20px;
+  height: 95%;
+  width: 100%;
+  resize: none;
+}

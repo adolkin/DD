@@ -15,6 +15,7 @@ import { GridsterModule } from 'angular-gridster2';
     GridsterModule
   ],
   declarations: [  
+    
   ],
   exports: [
     CommonModule,

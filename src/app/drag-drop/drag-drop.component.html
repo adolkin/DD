@@ -1,18 +1,24 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of dashboard">
     <button (click)="removeItem($event, item)" class="btn btn-primary btn-xs">
-      delete
+      X
     </button>
     <button (click)="showDialog = !showDialog" class="btn btn-primary btn-xs">
-      edit
+      Edit
     </button>
-    <div [innerHTML]="bodyText"></div>
+    <!-- <div [innerHTML]="bodyText"></div> -->
+    <!-- <span *ngIf="item.content">{{item.content}}</span> -->
+    <div *ngIf="item.content" [innerHTML]="item.content" ></div>
   </gridster-item>
 
 </gridster>
-<button (click)="addItem()" class="btn btn-primary">
-  add
+<button (click)="addItem()" class="btn btn-success">
+  Add
 </button>
+<button (click)="addItem()" class="btn btn-success">
+  See
+</button>
+
 
 <app-modal [(visible)]="showDialog">
   <textarea [(ngModel)]="bodyText"></textarea>
