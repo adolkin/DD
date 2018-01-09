@@ -72,7 +72,8 @@ export class DragDropComponent implements OnInit {
       {cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText },
       {cols: 4, rows: 4, y: 2, x: 2, content: this.boxs[1].bodyText },
       {cols: 2, rows: 2, y: 7, x: 7, content: this.boxs[2].bodyText },
-      {cols: 1, rows: 1, y: 10, x: 10, content: this.boxs[3].bodyText }
+      // {cols: 1, rows: 1, y: 10, x: 10, content: this.boxs[3].bodyText },
+      {cols: 5, rows: 5, y: 10, x: 10, test: 'abs <iframe width="300" height="300" src="https://www.youtube.com/embed/nZlTx9nxY-U?list=RDMMnZlTx9nxY-U" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>' }
     ];
   }
 

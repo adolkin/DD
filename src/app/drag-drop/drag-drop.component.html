@@ -1,17 +1,19 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of dashboard">
     <div class="button-box" [hidden]="viewed">
-      <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-primary btn-xs">Edit</button>
-      <button (click)="removeItem($event, item)" class="btn btn-danger btn-xs">Delete</button>
+      <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
+      <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
     </div>
     <div *ngIf="item.content" [innerHTML]="item.content">
     </div>
+    <div *ngIf="item.test">{{item.test}}
+      </div>
   </gridster-item>
 </gridster>
 
 <div class="menu">
-  <button (click)="addItem()" class="btn btn-success">Add</button>
-  <button (click)="viewed = !viewed" class="btn btn-success">Fix</button>
+  <button (click)="addItem()" class="btn btn-success glyphicon glyphicon-plus"></button>
+  <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
 </div>
 
 <app-modal [(visible)]="showDialog" [box]="selectedBox" (bodyText)="changeText($event)"></app-modal>
