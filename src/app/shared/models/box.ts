@@ -1,4 +1,4 @@
-export class Item {
+export class Box {
     id: number;
     bodyText: string;
 } 

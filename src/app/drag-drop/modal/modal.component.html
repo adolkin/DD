@@ -1,8 +1,9 @@
 <div [@dialog] *ngIf="visible" class="dialog">
   <div>
-    <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+    <button class="btn" (click)="close()" >X</button>
+    <button class="btn" (click)="saveChange(box)">Save</button>
   </div>
   <div class="content">
-    <ng-content></ng-content>
+    <textarea [(ngModel)]="box.content"></textarea>   
   </div>
 </div>

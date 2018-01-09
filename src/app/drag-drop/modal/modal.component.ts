@@ -1,3 +1,4 @@
+import { Box } from './../../shared/models/box';
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -19,17 +20,26 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ModalComponent implements OnInit {
 
-  @Input() closable = true;
+  @Input() box;
   @Input() visible: boolean;
-  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() bodyText: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  data: string = "";  
+  constructor() {
+   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
-  close() {
+  close(): void {
     this.visible = false;
-    this.visibleChange.emit(this.visible);
+  }
+
+  saveChange(box: Box): void {
+    this.data = this.box.content;
+    console.log(this.data);
+    this.bodyText.emit(this.data);
+    this.visible = false;
   }
 
 }
