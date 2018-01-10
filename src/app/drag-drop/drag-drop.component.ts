@@ -1,8 +1,10 @@
+import { BoxService } from './../core/services/box.service';
+import { Dashboard } from './../shared/models/dashboard';
 import { Box } from './../shared/models/box';
 import { BOXS } from './../shared/mock-boxs';
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { GridsterConfig, GridsterItem }  from 'angular-gridster2';
+import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 @Component({
@@ -14,13 +16,15 @@ export class DragDropComponent implements OnInit {
 
   options: GridsterConfig;
   dashboard: Array<Object>;
+  // dashboard: Dashboard[];
   showDialog = false;
 
-  boxs = BOXS;
+  box: any = {};
+  boxs: Box[];
   selectedBox: Box;
   viewed = true;
-  
-  videoUrl: any ='<iframe width="854" height="480" src="https://www.youtube.com/embed/ASj81daun5Q?list=RDASj81daun5Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
+
+  videoUrl: any = '<iframe width="854" height="480" src="https://www.youtube.com/embed/ASj81daun5Q?list=RDASj81daun5Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
 
   static eventStop(item, scope) {
     console.info('eventStop', item, scope);
@@ -38,7 +42,10 @@ export class DragDropComponent implements OnInit {
     console.info('itemInitialized', item);
   }
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private boxService: BoxService
+  ) {
     this.videoUrl = this.sanitizer.bypassSecurityTrustHtml(this.videoUrl);
   }
 
@@ -75,11 +82,15 @@ export class DragDropComponent implements OnInit {
       swap: false
     };
 
+    this.getBoxs();
+  }
+
+  createDashboard(): void {
     this.dashboard = [
-      {cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText },
-      {cols: 4, rows: 4, y: 2, x: 2, content: this.boxs[1].bodyText },
-      {cols: 4, rows: 2, y: 7, x: 7, content: this.boxs[2].bodyText },
-      {cols: 5, rows: 5, y: 0, x: 7, test: 'abc' }
+      { cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText },
+      { cols: 4, rows: 4, y: 2, x: 2, content: this.boxs[1].bodyText },
+      { cols: 4, rows: 2, y: 7, x: 7, content: this.boxs[2].bodyText },
+      { cols: 5, rows: 5, y: 0, x: 7, test: 'abc' }
     ];
   }
 
@@ -92,6 +103,14 @@ export class DragDropComponent implements OnInit {
   addItem() {
     this.dashboard.push({});
   };
+
+  getBoxs(): void {
+    this.boxService.getBoxs()
+      .subscribe(boxs => {
+        this.boxs = boxs;
+        this.createDashboard();
+      });
+  }
 
   onSelect(box: Box): void {
     console.log(box);
