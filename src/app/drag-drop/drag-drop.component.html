@@ -6,14 +6,19 @@
     </div>
     <div *ngIf="item.content" [innerHTML]="item.content">
     </div>
-    <div *ngIf="item.test">{{item.test}}
-      </div>
+    <div *ngIf="item.test">
+      <!-- <iframe width="854" height="480" src="https://www.youtube.com/embed/ASj81daun5Q?list=RDASj81daun5Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
+      </iframe> -->
+      <div [innerHTML]="videoUrl"></div>
+    </div>
   </gridster-item>
+
 </gridster>
 
 <div class="menu">
   <button (click)="addItem()" class="btn btn-success glyphicon glyphicon-plus"></button>
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
 </div>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/ASj81daun5Q?list=RDASj81daun5Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 <app-modal [(visible)]="showDialog" [box]="selectedBox" (bodyText)="changeText($event)"></app-modal>
