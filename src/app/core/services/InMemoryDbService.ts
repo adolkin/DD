@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       { 
         id: 3, 
-        bodyText: `<img src="https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg" alt="Image" width="512" height="256">` 
+        bodyText: `<img src="https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg" alt="Image">` 
       }
     ];
     return {boxs}

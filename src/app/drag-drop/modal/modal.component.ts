@@ -1,5 +1,4 @@
 import { BoxService } from './../../core/services/box.service';
-import { Dashboard } from './../../shared/models/dashboard';
 import { popupAnimation } from './../../shared/animations/popup.animations';
 import { Box } from './../../shared/models/box';
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
@@ -15,6 +14,8 @@ export class ModalComponent implements OnInit {
 
   @Input() box;
   @Input() visible: boolean;
+
+  @Output() bodyText: EventEmitter<string> = new EventEmitter<string>();
 
   data: string = "";
 
@@ -38,8 +39,7 @@ export class ModalComponent implements OnInit {
     this.boxService.editBox(newBox)
       .subscribe();
 
-    this.boxService.getBoxs()
-      .subscribe(data => console.log(data));
+    this.bodyText.emit(newBox.bodyText);
 
     this.visible = false;
   }

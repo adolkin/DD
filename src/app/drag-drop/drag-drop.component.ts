@@ -1,7 +1,6 @@
+import { DashBoard } from './../shared/models/dashboard';
 import { BoxService } from './../core/services/box.service';
-import { Dashboard } from './../shared/models/dashboard';
 import { Box } from './../shared/models/box';
-import { BOXS } from './../shared/mock-boxs';
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
@@ -16,12 +15,12 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class DragDropComponent implements OnInit {
 
   options: GridsterConfig;
-  dashboard: Array<Object>;
+  dashboard: DashBoard[];
   showDialog = false;
 
   box: any = {};
   boxs: Box[];
-  selectedBox: Box;
+  selectedBox: DashBoard;
   viewed = true;
 
   static eventStop(item, scope) {
@@ -97,22 +96,22 @@ export class DragDropComponent implements OnInit {
 
   private createDashboard(): void {
     this.dashboard = [
-      { cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText, id: this.boxs[0].id },
-      { cols: 4, rows: 3, y: 3, x: 0, content: this.boxs[1].bodyText, id: this.boxs[1].id },
-      { cols: 4, rows: 4, y: 4, x: 4, content: this.boxs[2].bodyText, id: this.boxs[2].id }
+      { id: this.boxs[0].id, content: this.boxs[0].bodyText, x: 0, y: 0, cols: 1, rows: 2 },
+      { id: this.boxs[1].id, content: this.boxs[1].bodyText, x: 0, y: 3, cols: 2, rows: 3 },
+      { id: this.boxs[2].id, content: this.boxs[2].bodyText, x: 3, y: 3, cols: 4, rows: 4 }
     ];
   }
 
   addBox() {
     this.boxService.addBox()
       .subscribe(box => {
-        // console.log(box);
         this.boxs.push(box);
-        // console.log(this.box);
-        this.dashboard.push({
-          content: box.bodyText,
+        let newItem: any = {
+          content: box.bodyText = ``,
           id: box.id
-        });
+        }
+        this.dashboard.push(newItem)
+        // newItem.content = this.sanitizer.bypassSecurityTrustHtml(newItem.content);
       });
 
   }
@@ -123,7 +122,12 @@ export class DragDropComponent implements OnInit {
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
   }
 
-  onSelect(box: Box): void {
+  onSelect(box: DashBoard): void {
     this.selectedBox = box;
+  }
+
+  changeText(bodyText: any) {
+    bodyText = this.sanitizer.bypassSecurityTrustHtml(bodyText);
+    this.selectedBox.content = bodyText;
   }
 }

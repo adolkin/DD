@@ -4,7 +4,7 @@
       <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
       <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
     </div>
-    <div *ngIf="item.content" [innerHTML]="item.content">
+    <div *ngIf="item.content" [innerHTML]="item.content" class="item">
     </div>
   </gridster-item>
 
@@ -15,4 +15,4 @@
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
 </div>
 
-<app-modal [(visible)]="showDialog" [box]="selectedBox"></app-modal>
+<app-modal [(visible)]="showDialog" [box]="selectedBox" (bodyText)="changeText($event)"></app-modal>

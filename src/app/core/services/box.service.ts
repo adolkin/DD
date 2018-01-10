@@ -27,7 +27,6 @@ export class BoxService {
 
   addBox(): Observable<Box> {
     let box = new Box;
-    console.log(box);
     return this.http.post<Box>(this.url, box, httpOptions)
       .pipe(
         catchError(this.handleError<Box>('addBox'))
