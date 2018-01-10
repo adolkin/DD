@@ -15,7 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       { 
         id: 2, 
-        bodyText: `<iframe width="854" height="480" src="https://www.youtube.com/embed/Zjpo99z0yxA" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>` 
+        bodyText: `<iframe width="400" height="400" src="https://www.youtube.com/embed/ASj81daun5Q?list=RDASj81daun5Q" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>` 
       },
       { 
         id: 3, 

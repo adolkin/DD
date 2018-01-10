@@ -15,22 +15,21 @@ export class ModalComponent implements OnInit {
   @Input() visible: boolean;
   @Output() bodyText: EventEmitter<string> = new EventEmitter<string>();
 
-  data: string = "";  
-  constructor() {
-   }
+  data: string = "";
+
+  constructor() {}
 
   ngOnInit() {
-   }
+  }
 
   close(): void {
     this.visible = false;
-    this.bodyText.emit(this.box.content);
   }
 
   saveChange(box: Box): void {
     this.visible = false;
     this.data = this.box.content;
     console.log(this.data);
-    this.bodyText.emit(this.data);  
+    this.bodyText.emit(this.data);
   }
 }
