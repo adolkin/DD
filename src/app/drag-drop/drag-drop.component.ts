@@ -23,22 +23,21 @@ export class DragDropComponent implements OnInit {
   boxs: Box[];
   selectedBox: Box;
   viewed = true;
-  trustedUrl: SafeUrl[];
 
   static eventStop(item, scope) {
-    console.info('eventStop', item, scope);
+    // console.info('eventStop', item, scope);
   }
 
   static itemChange(item, scope) {
-    console.info('itemChanged', item, scope);
+    // console.info('itemChanged', item, scope);
   }
 
   static itemResize(item, scope) {
-    console.info('itemResized', item, scope);
+    // console.info('itemResized', item, scope);
   }
 
   static itemInit(item) {
-    console.info('itemInitialized', item);
+    // console.info('itemInitialized', item);
   }
 
   constructor(
@@ -89,27 +88,34 @@ export class DragDropComponent implements OnInit {
     this.boxService.getBoxs()
       .subscribe(boxs => {
         this.boxs = boxs;
-        for (var i = 0; i < this.boxs.length; i++)
-        {
+        for (var i = 0; i < this.boxs.length; i++) {
           boxs[i].bodyText = this.sanitizer.bypassSecurityTrustHtml(boxs[i].bodyText);
-          console.log(this.boxs[i].bodyText);
         }
-        
         this.createDashboard();
       });
   }
 
   private createDashboard(): void {
     this.dashboard = [
-      { cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText },
-      { cols: 4, rows: 4, y: 2, x: 2, content: this.boxs[1].bodyText },
-      { cols: 4, rows: 2, y: 7, x: 7, content: this.boxs[2].bodyText }
+      { cols: 2, rows: 2, y: 0, x: 0, content: this.boxs[0].bodyText, id: this.boxs[0].id },
+      { cols: 4, rows: 3, y: 3, x: 0, content: this.boxs[1].bodyText, id: this.boxs[1].id },
+      { cols: 4, rows: 4, y: 4, x: 4, content: this.boxs[2].bodyText, id: this.boxs[2].id }
     ];
   }
 
-  addItem() {
-    this.dashboard.push({});
-  };
+  addBox() {
+    this.boxService.addBox()
+      .subscribe(box => {
+        // console.log(box);
+        this.boxs.push(box);
+        // console.log(this.box);
+        this.dashboard.push({
+          content: box.bodyText,
+          id: box.id
+        });
+      });
+
+  }
 
   removeItem($event, item) {
     $event.preventDefault();
@@ -118,12 +124,6 @@ export class DragDropComponent implements OnInit {
   }
 
   onSelect(box: Box): void {
-    console.log(box);
     this.selectedBox = box;
-  }
-
-  changeText(bodyText: string) {
-    console.log(bodyText);
-    this.selectedBox.bodyText = bodyText;
   }
 }

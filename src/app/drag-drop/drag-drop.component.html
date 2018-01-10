@@ -11,8 +11,8 @@
 </gridster>
 
 <div class="menu">
-  <button (click)="addItem()" class="btn btn-success glyphicon glyphicon-plus"></button>
+  <button (click)="addBox()" class="btn btn-success glyphicon glyphicon-plus"></button>
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
 </div>
 
-<app-modal [(visible)]="showDialog" [box]="selectedBox" (bodyText)="changeText($event)"></app-modal>
+<app-modal [(visible)]="showDialog" [box]="selectedBox"></app-modal>

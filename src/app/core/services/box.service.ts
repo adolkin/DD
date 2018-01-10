@@ -20,14 +20,29 @@ export class BoxService {
 
   getBoxs(): Observable<Box[]> {
     return this.http.get<Box[]>(this.url)
-    .pipe(
-      catchError(this.handleError('getDashComments', []))
-    );
+      .pipe(
+        catchError(this.handleError('getBoxs', []))
+      );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  addBox(): Observable<Box> {
+    let box = new Box;
+    console.log(box);
+    return this.http.post<Box>(this.url, box, httpOptions)
+      .pipe(
+        catchError(this.handleError<Box>('addBox'))
+      );
+  }
+
+  editBox(box: Box): Observable<Box> {
+    return this.http.put<Box>(this.url, box, httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('editBox'))
+      );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-   
       console.error(error);
       return of(result as T);
     };

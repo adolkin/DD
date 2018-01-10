@@ -1,9 +1,9 @@
 <div [@dialog] *ngIf="visible" class="dialog">
   <div>
     <button class="btn" (click)="close()" >X</button>
-    <button class="btn" (click)="saveChange(box)">Save</button>
+    <button class="btn" (click)="editBox(text.value)">Save</button>
   </div>
   <div class="content">
-    <textarea [(ngModel)]="box.content"></textarea>   
+    <textarea [innerHTML]="box.content" #text></textarea>
   </div>
 </div>
