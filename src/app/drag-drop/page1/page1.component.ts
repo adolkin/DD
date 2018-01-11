@@ -6,12 +6,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-page1',
   templateUrl: './page1.component.html',
-  styleUrls: ['./page1.component.scss']
+  styleUrls: ['./page1.component.scss'],
 })
 export class Page1Component implements OnInit {
 
@@ -23,6 +24,8 @@ export class Page1Component implements OnInit {
   boxs: Box[];
   selectedBox: DashBoard;
   viewed = true;
+
+  carouselState: boolean = false;
 
   static eventStop(item, scope) {
     // console.info('eventStop', item, scope);
@@ -42,13 +45,15 @@ export class Page1Component implements OnInit {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private boxService: BoxService
+    private boxService: BoxService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.createOptions();
     this.getBoxs();
+
   }
 
   private createOptions(): void {
@@ -131,5 +136,19 @@ export class Page1Component implements OnInit {
   changeText(bodyText: any) {
     bodyText = this.sanitizer.bypassSecurityTrustHtml(bodyText);
     this.selectedBox.content = bodyText;
+  }
+
+  carousel(): void {
+    this.carouselState = this.carouselState === false ? true : false;
+    console.log(this.carouselState);
+    this.navigate();
+  }
+
+  navigate(): void {
+    if(this.carouselState == true){
+      setTimeout((router: Router) => {
+        this.router.navigate(['dragdrop/page2']);
+      }, 5000);
+    }
   }
 }

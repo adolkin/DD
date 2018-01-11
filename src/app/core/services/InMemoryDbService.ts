@@ -24,6 +24,22 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 4,
         bodyText: ``
+      },
+      {
+        id: 5,
+        bodyText: `<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wappen-ober-ingelheim-400x400.png" alt="Image">`
+      },
+      {
+        id: 6,
+        bodyText: `<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wappen-ober-ingelheim-400x400.png" alt="Image">`
+      },
+      {
+        id: 7,
+        bodyText: `<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wappen-ober-ingelheim-400x400.png" alt="Image">`
+      },
+      {
+        id: 8,
+        bodyText: ``
       }
     ];
     return {boxs}
