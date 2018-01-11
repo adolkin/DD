@@ -97,8 +97,9 @@ export class DragDropComponent implements OnInit {
   private createDashboard(): void {
     this.dashboard = [
       { id: this.boxs[0].id, content: this.boxs[0].bodyText, x: 0, y: 0, cols: 1, rows: 2 },
-      { id: this.boxs[1].id, content: this.boxs[1].bodyText, x: 0, y: 3, cols: 2, rows: 3 },
-      { id: this.boxs[2].id, content: this.boxs[2].bodyText, x: 3, y: 3, cols: 4, rows: 4 }
+      { id: this.boxs[1].id, content: this.boxs[1].bodyText, x: 0, y: 3, cols: 3, rows: 3 },
+      { id: this.boxs[2].id, content: this.boxs[2].bodyText, x: 4, y: 3, cols: 4, rows: 4 },
+      { id: this.boxs[3].id, content: this.boxs[3].bodyText, x: 7, y: 7, cols: 1, rows: 1 },
     ];
   }
 

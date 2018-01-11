@@ -1,7 +1,7 @@
 <div [@dialog] *ngIf="visible" class="dialog">
-  <div>
-    <button class="btn" (click)="close()" >X</button>
-    <button class="btn" (click)="editBox(text.value)">Save</button>
+  <div class="navigate">  
+    <button class="btn btn-sm btn-danger" (click)="editBox(text.value)">Save</button>
+    <button class="btn btn-sm" (click)="close()">Cancel</button>
   </div>
   <div class="content">
     <textarea [innerHTML]="box.content" #text></textarea>

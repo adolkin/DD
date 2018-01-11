@@ -17,8 +17,6 @@ export class ModalComponent implements OnInit {
 
   @Output() bodyText: EventEmitter<string> = new EventEmitter<string>();
 
-  data: string = "";
-
   constructor(
     private boxService: BoxService
   ) {}
@@ -38,9 +36,7 @@ export class ModalComponent implements OnInit {
 
     this.boxService.editBox(newBox)
       .subscribe();
-
     this.bodyText.emit(newBox.bodyText);
-
     this.visible = false;
   }
 }
