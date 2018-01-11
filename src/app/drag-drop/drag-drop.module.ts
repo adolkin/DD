@@ -8,6 +8,8 @@ import { SharedModule } from './../shared/shared.module';
 
 import { DragDropComponent } from './drag-drop.component';
 import { ModalComponent } from './modal/modal.component';
+import { Page1Component } from './page1/page1.component';
+import { Page2Component } from './page2/page2.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ModalComponent } from './modal/modal.component';
     SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true })
   ],
-  declarations: [DragDropComponent, ModalComponent]
+  declarations: [DragDropComponent, ModalComponent, Page1Component, Page2Component]
 })
 export class DragDropModule { }
