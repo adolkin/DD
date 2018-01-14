@@ -7,12 +7,13 @@
     <div *ngIf="item.content" [innerHTML]="item.content" class="item">
     </div>
   </gridster-item>
-
 </gridster>
 
 <div class="menu">
   <button (click)="addBox()" class="btn btn-success glyphicon glyphicon-plus"></button>
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
+  <button (click)="carousel()" class="btn btn-success glyphicon glyphicon-play"></button>
+  <a routerLink="/dragdrop/page1">Page1</a>
 </div>
 
 <app-modal [(visible)]="showDialog" [box]="selectedBox" (bodyText)="changeText($event)"></app-modal>

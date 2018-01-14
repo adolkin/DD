@@ -1,11 +1,9 @@
-import { routerTransition } from './../shared/animations/router.animation';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-drag-drop',
   templateUrl: './drag-drop.component.html',
-  styleUrls: ['./drag-drop.component.scss'],
-  animations: [ routerTransition ]
+  styleUrls: ['./drag-drop.component.scss']
 })
 export class DragDropComponent {
   getState(outlet) {

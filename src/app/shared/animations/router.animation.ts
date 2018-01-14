@@ -1,18 +1,24 @@
-import {trigger, animate, style, group, query, transition} from '@angular/animations';
+import { animate, AnimationEntryMetadata, state, style, transition, trigger } from '@angular/core';
 
-export const routerTransition = trigger('routerTransition', [
-  transition('* <=> *', [
-    query(':enter, :leave', style({ position: 'fixed', width:'100%' })
-      , { optional: true }),
-    group([
-      query(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
-      ], { optional: true }),
-      query(':leave', [
-        style({ transform: 'translateX(0%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
-      ], { optional: true }),
+export const slideInDownAnimation: AnimationEntryMetadata =
+  trigger('routeAnimation', [
+    state('*',
+      style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })
+    ),
+    transition(':enter', [
+      style({
+        opacity: 0,
+        transform: 'translateX(-100%)'
+      }),
+      animate(1000)
+    ]),
+    transition(':leave', [
+      animate(1000, style({
+        opacity: 0,
+        transform: 'translateX(100%)'
+      }))
     ])
-  ])
-])
+  ]);

@@ -15,7 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       { 
         id: 2, 
-        bodyText: `<iframe width="854" height="480" src="https://www.youtube.com/embed/WU7SGn0MeP0?start=1702&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>` 
+        bodyText: `<iframe width="854" height="480" src="https://www.youtube.com/embed/WU7SGn0MeP0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>` 
       },
       { 
         id: 3, 
@@ -31,11 +31,11 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 6,
-        bodyText: `<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wappen-ober-ingelheim-400x400.png" alt="Image">`
+        bodyText: `<img src="http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg" alt="Image">`
       },
       {
         id: 7,
-        bodyText: `<img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wappen-ober-ingelheim-400x400.png" alt="Image">`
+        bodyText: `<iframe width="854" height="480" src="https://www.youtube.com/embed/hKRUPYrAQoE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
       },
       {
         id: 8,

@@ -1,8 +1,9 @@
+import { slideInDownAnimation } from './../../shared/animations/router.animation';
 import { DashBoard } from './../../shared/models/dashboard';
 import { BoxService } from './../../core/services/box.service';
 import { Box } from './../../shared/models/box';
 
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, HostBinding } from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -12,9 +13,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-page2',
   templateUrl: './page2.component.html',
-  styleUrls: ['./page2.component.scss']
-})
+  styleUrls: ['./page2.component.scss'],
+  animations: [slideInDownAnimation]
+  })
 export class Page2Component implements OnInit {
+
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
 
   options: GridsterConfig;
   dashboard: DashBoard[];
@@ -103,8 +109,8 @@ export class Page2Component implements OnInit {
   private createDashboard(): void {
     this.dashboard = [
       { id: this.boxs[4].id, content: this.boxs[4].bodyText, x: 0, y: 0, cols: 2, rows: 2 },
-      { id: this.boxs[5].id, content: this.boxs[5].bodyText, x: 0, y: 3, cols: 2, rows: 2 },
-      { id: this.boxs[6].id, content: this.boxs[6].bodyText, x: 4, y: 3, cols: 2, rows: 2 },
+      { id: this.boxs[5].id, content: this.boxs[5].bodyText, x: 0, y: 4, cols: 4, rows: 4 },
+      { id: this.boxs[6].id, content: this.boxs[6].bodyText, x: 4, y: 3, cols: 3, rows: 3 },
       { id: this.boxs[7].id, content: this.boxs[7].bodyText, x: 7, y: 7, cols: 1, rows: 1 },
     ];
   }
@@ -138,4 +144,18 @@ export class Page2Component implements OnInit {
     this.selectedBox.content = bodyText;
   }
 
+  carousel(): void {
+    this.router.navigate(['dragdrop/page1']);
+    // this.carouselState = this.carouselState === false ? true : false;
+    // console.log(this.carouselState);
+    // this.navigate();
+  }
+
+  // navigate(): void {
+  //   if(this.carouselState == true){
+  //     setTimeout((router: Router) => {
+  //       this.router.navigate(['dragdrop/page2']);
+  //     }, 5000);
+  //   }
+  // }
 }
