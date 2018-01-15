@@ -2,19 +2,25 @@ import { DashBoard } from './../../shared/models/dashboard';
 import { BoxService } from './../../core/services/box.service';
 import { Box } from './../../shared/models/box';
 
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, HostBinding } from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
+import { routerAnimation } from '../../shared/animations/router.animation';
 
 
 @Component({
   selector: 'app-page1',
   templateUrl: './page1.component.html',
   styleUrls: ['./page1.component.scss'],
+  animations: [routerAnimation]
 })
 export class Page1Component implements OnInit {
+
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
 
   options: GridsterConfig;
   dashboard: DashBoard[];

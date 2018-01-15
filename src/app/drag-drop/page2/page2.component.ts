@@ -1,4 +1,4 @@
-import { slideInDownAnimation } from './../../shared/animations/router.animation';
+import { routerAnimation } from './../../shared/animations/router.animation';
 import { DashBoard } from './../../shared/models/dashboard';
 import { BoxService } from './../../core/services/box.service';
 import { Box } from './../../shared/models/box';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   selector: 'app-page2',
   templateUrl: './page2.component.html',
   styleUrls: ['./page2.component.scss'],
-  animations: [slideInDownAnimation]
+  animations: [routerAnimation]
   })
 export class Page2Component implements OnInit {
 
