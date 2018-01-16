@@ -157,4 +157,6 @@ export class Page1Component implements OnInit {
       }, 5000);
     }
   }
+
+  
 }

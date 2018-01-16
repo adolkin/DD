@@ -1,3 +1,4 @@
+import { DashboardService } from './services/dashboard.service';
 import { BoxService } from './services/box.service';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +11,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
   ],
   declarations: [ErrorPageComponent],
   providers: [
-    BoxService
+    BoxService,
+    DashboardService
   ]
 })
 export class CoreModule { }

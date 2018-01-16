@@ -15,10 +15,10 @@ export const routerAnimation: AnimationEntryMetadata =
         opacity: 0,
         transform: 'translateX(100%)',
       }),
-      animate(1000)
+      animate(2000)
     ]),
     transition(':leave', [
-      animate(1000, style({
+      animate(2000, style({
         opacity: 0,
         transform: 'translateX(-100%)'
       }))

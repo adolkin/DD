@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { environment } from './../environments/environment.prod';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { SharedModule } from './shared/shared.module';
 import { DragDropModule } from './drag-drop/drag-drop.module';
 import { CoreModule } from './core/core.module';
@@ -18,7 +22,9 @@ import { AppRoutingModule } from './/app-routing.module';
     SharedModule,
     DragDropModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'abacus'),
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
