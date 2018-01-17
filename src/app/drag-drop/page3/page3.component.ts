@@ -38,7 +38,7 @@ export class Page3Component implements OnInit {
       gridType: 'fit',
       compactUp: false,
       compactLeft: false,
-      itemChangeCallback: this.itemChange,
+      itemChangeCallback: this.itemChange.bind(this),
       itemResizeCallback: this.itemResize,
       margin: 1,
       outerMargin: true,
@@ -72,8 +72,7 @@ export class Page3Component implements OnInit {
 
   itemChange(item, scope) {
     console.info('itemChanged', item, scope);
-    // this.dashboardService.editBox(item);
-    // this.update(item);
+    this.dashboardService.editBox(item);
   }
 
   itemResize(item, scope) {
@@ -89,7 +88,10 @@ export class Page3Component implements OnInit {
       .subscribe(items => {
         this.items = items;
         this.items.forEach(item => {
-          item.content = this.sanitizer.bypassSecurityTrustHtml(item.content);
+          if(item.content.includes("iframe")){
+            let trustHtml = item.content;
+            trustHtml = this.sanitizer.bypassSecurityTrustHtml(trustHtml);
+          }
         });
       })
   }
@@ -97,12 +99,6 @@ export class Page3Component implements OnInit {
   addBox(): void {
 
   }
-
-  update(item: any){
-    console.log(item);
-    // this.dashboardService.editBox(item);
-  }
-
 
   // addBox() {
   //   this.boxService.addBox()

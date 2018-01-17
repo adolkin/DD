@@ -22,8 +22,8 @@ export class DashboardService {
   } 
 
   editBox(item: Item) {
-    console.log(item);
-    // return this.db.object('/page1/' + item.key)
-    //   .update(item);
+    console.log(item)
+    return this.db.object('/page1/' + item.key)
+      .update(item);
   }
 }
