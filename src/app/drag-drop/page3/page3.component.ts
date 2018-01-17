@@ -1,6 +1,5 @@
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { AngularFireDatabase } from 'angularfire2/database'
 import { Observable } from 'rxjs/Observable';
@@ -24,7 +23,6 @@ export class Page3Component implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private sanitizer: DomSanitizer,
     private router: Router
   ) { }
 
@@ -87,12 +85,6 @@ export class Page3Component implements OnInit {
     this.dashboardService.getAll()
       .subscribe(items => {
         this.items = items;
-        this.items.forEach(item => {
-          if(item.content.includes("iframe")){
-            let trustHtml = item.content;
-            trustHtml = this.sanitizer.bypassSecurityTrustHtml(trustHtml);
-          }
-        });
       })
   }
 

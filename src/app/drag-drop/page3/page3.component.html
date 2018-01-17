@@ -4,7 +4,7 @@
       <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
       <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
     </div>
-    <div *ngIf="item.content" [innerHTML]="item.content" class="item">
+    <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
     </div>
   </gridster-item>
 </gridster>

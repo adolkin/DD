@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridsterModule } from 'angular-gridster2';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 
 @NgModule({
@@ -14,15 +15,16 @@ import { GridsterModule } from 'angular-gridster2';
     BrowserAnimationsModule,
     GridsterModule,
   ],
-  declarations: [  
-    
-  ],
+  declarations: [
+  SafeHtmlPipe
+],
   exports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    GridsterModule 
+    GridsterModule,
+    SafeHtmlPipe
   ]
 })
 export class SharedModule { }
