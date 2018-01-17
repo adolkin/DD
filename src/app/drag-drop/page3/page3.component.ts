@@ -17,9 +17,10 @@ export class Page3Component implements OnInit {
 
   items: Item[] = [];
   options: GridsterConfig;
+  dashboard: Array<any>;
   showDialog = false;
 
-  selectedBox: Item;
+  selectedItem: Item;
 
   constructor(
     private dashboardService: DashboardService,
@@ -65,56 +66,46 @@ export class Page3Component implements OnInit {
   }
 
   eventStop(item, scope) {
-    console.info('eventStop', item, scope);
+    // console.info('eventStop', item, scope);
   }
 
   itemChange(item, scope) {
-    console.info('itemChanged', item, scope);
-    this.dashboardService.editBox(item);
+    // console.info('itemChanged', item, scope);
+    this.dashboardService.editItem(item);
   }
 
   itemResize(item, scope) {
-    console.info('itemResized', item, scope);
+    // console.info('itemResized', item, scope);
   }
 
   itemInit(item) {
-    console.info('itemInitialized', item);
+    // console.info('itemInitialized', item);
   }
 
   getAll(): void {
     this.dashboardService.getAll()
       .subscribe(items => {
         this.items = items;
+        this.dashboard = items;
       })
   }
 
-  addBox(): void {
-
+  addItem(): void {
+    let newItem: any = {
+      content: ``,
+      rows: 1,
+      cols: 1,
+    }
+    this.dashboardService.addItem(newItem);
   }
 
-  // addBox() {
-  //   this.boxService.addBox()
-  //     .subscribe(box => {
-  //       this.boxs.push(box);
-  //       let newItem: any = {
-  //         content: box.bodyText = ``,
-  //         id: box.id
-  //       }
-  //       this.dashboard.push(newItem)
-  //       // newItem.content = this.sanitizer.bypassSecurityTrustHtml(newItem.content);
-  //     });
+  removeItem($event, item) {
+    this.dashboardService.removeItem(item);
+  }
 
-  // }
-
-  // removeItem($event, item) {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   this.dashboard.splice(this.dashboard.indexOf(item), 1);
-  // }
-
-  // onSelect(box: DashBoard): void {
-  //   this.selectedBox = box;
-  // }
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+  }
 
   // changeText(bodyText: any) {
   //   bodyText = this.sanitizer.bypassSecurityTrustHtml(bodyText);

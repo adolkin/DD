@@ -11,19 +11,23 @@ export class DashboardService {
 
   getAll() {
     return this.db.list('/page1')
-      // .valueChanges()
       .snapshotChanges().map(actions => {
         return actions.map(action => ({ key: action.key, ...action.payload.val() })); 
       })
   }
 
-  addBox(box: any) {
-    return this.db.list('/page1').push(box);
+  addItem(item: any) {
+    return this.db.list('/page1').push(item);
   } 
 
-  editBox(item: Item) {
-    console.log(item)
+  editItem(item: Item) {
     return this.db.object('/page1/' + item.key)
       .update(item);
+  }
+
+  removeItem(item: Item) {
+    return this.db.object('/page1/' + item.key)
+      .remove()
+      .then(x => console.log(item.key + "deleted"));
   }
 }

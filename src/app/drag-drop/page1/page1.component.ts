@@ -123,7 +123,8 @@ export class Page1Component implements OnInit {
           content: box.bodyText = ``,
           id: box.id
         }
-        this.dashboard.push(newItem)
+        this.dashboard.push(newItem);
+        console.log(this.dashboard);
         // newItem.content = this.sanitizer.bypassSecurityTrustHtml(newItem.content);
       });
 
