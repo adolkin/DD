@@ -16,4 +16,4 @@
   <!-- <a routerLink="/dragdrop/page1">Page1</a> -->
 </div>
 
-<app-modal [(visible)]="showDialog" [box]="selectedItem" (bodyText)="changeText($event)"></app-modal>
+<app-modal-box [(visible)]="showDialog" [item]="selectedItem" (bodyText)="changeText($event)"></app-modal-box>

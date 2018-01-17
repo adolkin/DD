@@ -19,6 +19,7 @@ export class Page3Component implements OnInit {
   options: GridsterConfig;
   dashboard: Array<any>;
   showDialog = false;
+  viewed = true;
 
   selectedItem: Item;
 

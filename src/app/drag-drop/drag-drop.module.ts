@@ -11,6 +11,7 @@ import { ModalComponent } from './modal/modal.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { Page3Component } from './page3/page3.component';
+import { ModalBoxComponent } from './modal-box/modal-box.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { Page3Component } from './page3/page3.component';
     SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true })
   ],
-  declarations: [DragDropComponent, ModalComponent, Page1Component, Page2Component, Page3Component]
+  declarations: [DragDropComponent, ModalComponent, Page1Component, Page2Component, Page3Component, ModalBoxComponent]
 })
 export class DragDropModule { }
