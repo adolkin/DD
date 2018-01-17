@@ -1,27 +1,30 @@
-import { forEach } from '@angular/router/src/utils/collection';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
-import { AngularFireDatabase } from 'angularfire2/database'
-import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from './../../core/services/dashboard.service';
 import { Item } from '../../shared/models/item';
+import { routerAnimation } from './../../shared/animations/router.animation';
 
 @Component({
   selector: 'app-page3',
   templateUrl: './page3.component.html',
-  styleUrls: ['./page3.component.scss']
+  styleUrls: ['./page3.component.scss'],
+  animations: [routerAnimation]
 })
 export class Page3Component implements OnInit {
+
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
 
   items: Item[] = [];
   options: GridsterConfig;
   dashboard: Array<any>;
   showDialog = false;
   viewed = true;
-
   selectedItem: Item;
+  carouselState = false;
 
   constructor(
     private dashboardService: DashboardService,
@@ -31,6 +34,7 @@ export class Page3Component implements OnInit {
   ngOnInit() {
     this.getAll();
     this.createOptions();
+    // this.navigate();
   }
 
   private createOptions(): void {
@@ -108,11 +112,6 @@ export class Page3Component implements OnInit {
     this.selectedItem = item;
   }
 
-  // changeText(bodyText: any) {
-  //   bodyText = this.sanitizer.bypassSecurityTrustHtml(bodyText);
-  //   this.selectedBox.content = bodyText;
-  // }
-
   // carousel(): void {
   //   this.router.navigate(['dragdrop/page1']);
   //   // this.carouselState = this.carouselState === false ? true : false;
@@ -120,11 +119,13 @@ export class Page3Component implements OnInit {
   //   // this.navigate();
   // }
 
-  // // navigate(): void {
-  // //   if(this.carouselState == true){
-  // //     setTimeout((router: Router) => {
-  // //       this.router.navigate(['dragdrop/page2']);
-  // //     }, 5000);
-  // //   }
-  // // }
+  navigate(): void {
+    this.carouselState = true;
+    console.log(this.carouselState);
+    if(this.carouselState == true){
+      setTimeout((router: Router) => {
+        this.router.navigate(['dragdrop/page2']);
+      }, 5000);
+    }
+  }
 }

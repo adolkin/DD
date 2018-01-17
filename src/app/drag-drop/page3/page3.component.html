@@ -12,8 +12,7 @@
 <div class="menu">
   <button (click)="addItem()" class="btn btn-success glyphicon glyphicon-plus"></button>
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
-  <!-- <button (click)="carousel()" class="btn btn-success glyphicon glyphicon-play"></button> -->
-  <!-- <a routerLink="/dragdrop/page1">Page1</a> -->
+  <button (click)="navigate()" class="btn btn-success glyphicon glyphicon-play"></button>
 </div>
 
 <app-modal-box [(visible)]="showDialog" [item]="selectedItem" (bodyText)="changeText($event)"></app-modal-box>
