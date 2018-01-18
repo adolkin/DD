@@ -92,6 +92,7 @@ export class Page3Component implements OnInit {
       .subscribe(items => {
         this.items = items;
         this.dashboard = items;
+        console.log(this.items);
       })
   }
 
@@ -118,6 +119,10 @@ export class Page3Component implements OnInit {
   //   // console.log(this.carouselState);
   //   // this.navigate();
   // }
+
+  trackByItems(index: number, item: Item) {
+    return item.content;
+  }
 
   navigate(): void {
     this.carouselState = true;

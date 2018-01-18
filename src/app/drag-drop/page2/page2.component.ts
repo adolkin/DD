@@ -113,6 +113,10 @@ export class Page2Component implements OnInit {
     this.selectedItem = item;
   }
 
+  trackByItems(index: number, item: Item) {
+    return item.content;
+  }
+  
   // carousel(): void {
   //   this.router.navigate(['dragdrop/page1']);
   //   // this.carouselState = this.carouselState === false ? true : false;

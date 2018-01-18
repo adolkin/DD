@@ -1,5 +1,5 @@
 <gridster [options]="options">
-  <gridster-item [item]="item" *ngFor="let item of dashboard">
+  <gridster-item [item]="item" *ngFor="let item of dashboard; trackBy: trackByItems">
     <div class="button-box" [hidden]="viewed">
       <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
       <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
@@ -14,5 +14,4 @@
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
   <button (click)="navigate()" class="btn btn-success glyphicon glyphicon-play"></button>
 </div>
-
 <app-modal-box [(visible)]="showDialog" [item]="selectedItem" (bodyText)="changeText($event)"></app-modal-box>
