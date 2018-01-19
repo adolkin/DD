@@ -2,9 +2,10 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
-import { DashboardService } from './../../core/services/dashboard.service';
 import { Item } from '../../shared/models/item';
 import { routerAnimation } from './../../shared/animations/router.animation';
+import { DashboardService } from './../../core/services/dashboard.service';
+import { NavigationService } from './../../core/services/navigation.service';
 
 @Component({
   selector: 'app-page3',
@@ -25,16 +26,21 @@ export class Page3Component implements OnInit {
   viewed = true;
   selectedItem: Item;
   carouselState = false;
+  navigationState: boolean;
 
   constructor(
     private dashboardService: DashboardService,
+    private navigationService: NavigationService,
     private router: Router
-  ) { }
+  ) {
+    this.navigationState = this.navigationService.navigationState;
+    this.navigate();
+    console.log('page3 contructor: ' + this.navigationState);
+  }
 
   ngOnInit() {
     this.getAll();
     this.createOptions();
-    // this.navigate();
   }
 
   private createOptions(): void {
@@ -113,21 +119,21 @@ export class Page3Component implements OnInit {
     this.selectedItem = item;
   }
 
-  // carousel(): void {
-  //   this.router.navigate(['dragdrop/page1']);
-  //   // this.carouselState = this.carouselState === false ? true : false;
-  //   // console.log(this.carouselState);
-  //   // this.navigate();
-  // }
-
   trackByItems(index: number, item: Item) {
     return item.content;
   }
 
+  setState(): void {
+    this.navigationState = this.navigationState ? false : true;
+    this.navigationService.updateNavigation();
+
+    console.log("page3 setState: " + this.navigationState);
+
+    this.navigate();
+  }
+
   navigate(): void {
-    this.carouselState = true;
-    console.log(this.carouselState);
-    if(this.carouselState == true){
+    if (this.navigationService.navigationState == true) {
       setTimeout((router: Router) => {
         this.router.navigate(['dragdrop/page2']);
       }, 5000);

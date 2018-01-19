@@ -1,11 +1,13 @@
 import { Dashboard2Service } from './services/dashboard2.service';
 import { DashboardService } from './services/dashboard.service';
 import { BoxService } from './services/box.service';
+import { NavigationService } from './services/navigation.service';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../shared/shared.module';
 
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
   providers: [
     BoxService,
     DashboardService,
-    Dashboard2Service
+    Dashboard2Service,
+    NavigationService
   ]
 })
 export class CoreModule { }

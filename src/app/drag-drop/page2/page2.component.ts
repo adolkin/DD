@@ -1,3 +1,4 @@
+import { NavigationService } from './../../core/services/navigation.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
@@ -12,7 +13,7 @@ import { routerAnimation } from './../../shared/animations/router.animation';
   templateUrl: './page2.component.html',
   styleUrls: ['./page2.component.scss'],
   animations: [routerAnimation]
-  })
+})
 export class Page2Component implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
@@ -26,11 +27,17 @@ export class Page2Component implements OnInit {
   viewed = true;
   selectedItem: Item;
   carouselState = false;
+  navigationState: boolean;
 
   constructor(
     private dashboard2Service: Dashboard2Service,
+    private navigationService: NavigationService,
     private router: Router
-  ) { }
+  ) {
+    this.navigationState = this.navigationService.navigationState;
+    this.navigate();
+    console.log('page2 contructor: ' + this.navigationState);
+  }
 
   ngOnInit() {
     this.getAll();
@@ -116,22 +123,21 @@ export class Page2Component implements OnInit {
   trackByItems(index: number, item: Item) {
     return item.content;
   }
-  
-  // carousel(): void {
-  //   this.router.navigate(['dragdrop/page1']);
-  //   // this.carouselState = this.carouselState === false ? true : false;
-  //   // console.log(this.carouselState);
-  //   // this.navigate();
-  // }
+
+  setState(): void {
+    this.navigationState = this.navigationState ? false : true;
+    this.navigationService.updateNavigation();
+
+    console.log("page2 setState: " + this.navigationState);
+
+    this.navigate();
+  }
 
   navigate(): void {
-    this.carouselState = true;
-    console.log(this.carouselState);
-    if(this.carouselState == true){
+    if (this.navigationService.navigationState == true) {
       setTimeout((router: Router) => {
         this.router.navigate(['dragdrop/page3']);
       }, 5000);
     }
   }
-  
 }

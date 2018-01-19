@@ -11,7 +11,7 @@ const dragDropRoutes = [
   {
     path: 'dragdrop', component: DragDropComponent,
     children: [
-      { path: '', redirectTo: 'page1', pathMatch: 'full'},
+      { path: '', redirectTo: 'page3', pathMatch: 'full'},
       { path: 'page1', component: Page1Component },
       { path: 'page2', component: Page2Component },
       { path: 'page3', component: Page3Component }

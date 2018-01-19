@@ -12,6 +12,6 @@
 <div class="menu">
   <button (click)="addItem()" class="btn btn-success glyphicon glyphicon-plus"></button>
   <button (click)="viewed = !viewed" class="btn btn-success glyphicon glyphicon-cog"></button>
-  <button (click)="navigate()" class="btn btn-success glyphicon glyphicon-play"></button>
+  <button (click)="setState()" class="btn btn-success glyphicon" [ngClass]="{'glyphicon-play': !navigationState, 'glyphicon-stop': navigationState}"></button>
 </div>
 <app-modal-box [(visible)]="showDialog" [item]="selectedItem" (bodyText)="changeText($event)"></app-modal-box>
