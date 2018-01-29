@@ -6,13 +6,13 @@ import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { Dashboard2Service } from './../../core/services/dashboard2.service';
 import { Item } from '../../shared/models/item';
 import { routerAnimation } from './../../shared/animations/router.animation';
-
+import { fadeInAnimation } from './../../shared/animations/fadein.animation';
 
 @Component({
   selector: 'app-page2',
   templateUrl: './page2.component.html',
   styleUrls: ['./page2.component.scss'],
-  animations: [routerAnimation]
+  animations: [routerAnimation, fadeInAnimation]
 })
 export class Page2Component implements OnInit {
 
@@ -28,6 +28,7 @@ export class Page2Component implements OnInit {
   selectedItem: Item;
   carouselState = false;
   navigationState: boolean;
+  route: any;
 
   constructor(
     private dashboard2Service: Dashboard2Service,
@@ -42,7 +43,6 @@ export class Page2Component implements OnInit {
   ngOnInit() {
     this.getAll();
     this.createOptions();
-    // this.navigate();
   }
 
   private createOptions(): void {
@@ -128,14 +128,19 @@ export class Page2Component implements OnInit {
     this.navigationState = this.navigationState ? false : true;
     this.navigationService.updateNavigation();
 
-    console.log("page2 setState: " + this.navigationState);
+    // console.log("page2 setState: " + this.navigationState);
 
-    this.navigate();
+    if (this.navigationState == false) {
+      clearTimeout(this.route);
+    }
+    else {
+      this.navigate();
+    }
   }
 
   navigate(): void {
     if (this.navigationService.navigationState == true) {
-      setTimeout((router: Router) => {
+      this.route = setTimeout((router: Router) => {
         this.router.navigate(['dragdrop/page3']);
       }, 5000);
     }

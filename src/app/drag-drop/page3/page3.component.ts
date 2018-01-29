@@ -6,12 +6,13 @@ import { Item } from '../../shared/models/item';
 import { routerAnimation } from './../../shared/animations/router.animation';
 import { DashboardService } from './../../core/services/dashboard.service';
 import { NavigationService } from './../../core/services/navigation.service';
+import { fadeInAnimation } from './../../shared/animations/fadein.animation';
 
 @Component({
   selector: 'app-page3',
   templateUrl: './page3.component.html',
   styleUrls: ['./page3.component.scss'],
-  animations: [routerAnimation]
+  animations: [routerAnimation, fadeInAnimation]
 })
 export class Page3Component implements OnInit {
 
@@ -27,6 +28,7 @@ export class Page3Component implements OnInit {
   selectedItem: Item;
   carouselState = false;
   navigationState: boolean;
+  route: any;
 
   constructor(
     private dashboardService: DashboardService,
@@ -98,7 +100,7 @@ export class Page3Component implements OnInit {
       .subscribe(items => {
         this.items = items;
         this.dashboard = items;
-        console.log(this.items);
+        // console.log(this.items);
       })
   }
 
@@ -127,14 +129,19 @@ export class Page3Component implements OnInit {
     this.navigationState = this.navigationState ? false : true;
     this.navigationService.updateNavigation();
 
-    console.log("page3 setState: " + this.navigationState);
+    // console.log("page3 setState: " + this.navigationState);
 
-    this.navigate();
+    if (this.navigationState == false) {
+      clearTimeout(this.route);
+    }
+    else {
+      this.navigate();
+    }
   }
 
   navigate(): void {
     if (this.navigationService.navigationState == true) {
-      setTimeout((router: Router) => {
+      this.route = setTimeout((router: Router) => {
         this.router.navigate(['dragdrop/page2']);
       }, 5000);
     }
