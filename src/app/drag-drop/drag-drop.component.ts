@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./drag-drop.component.scss']
 })
 export class DragDropComponent {
-  getState(outlet) {
-    return outlet.activatedRouteData.state;
-  }
+
 }

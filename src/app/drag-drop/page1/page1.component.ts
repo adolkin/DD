@@ -18,6 +18,7 @@ import { routerAnimation } from '../../shared/animations/router.animation';
 })
 export class Page1Component implements OnInit {
 
+  // Animation when navigation
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
@@ -33,18 +34,22 @@ export class Page1Component implements OnInit {
 
   carouselState: boolean = false;
 
+  // trigger after drag, drop or resize item
   static eventStop(item, scope) {
     // console.info('eventStop', item, scope);
   }
 
+  //trigger when item change
   static itemChange(item, scope) {
     // console.info('itemChanged', item, scope);
   }
 
+  // trigger when resize rols, cols of item
   static itemResize(item, scope) {
     // console.info('itemResized', item, scope);
   }
 
+  // trigger when initialization
   static itemInit(item) {
     // console.info('itemInitialized', item);
   }
@@ -62,6 +67,7 @@ export class Page1Component implements OnInit {
 
   }
 
+  // Create Grid option https://github.com/tiberiuzuld/angular-gridster2
   private createOptions(): void {
     this.options = {
       gridType: 'fit',
@@ -95,6 +101,7 @@ export class Page1Component implements OnInit {
     };
   }
 
+  // get data and bind this data to boxs array
   private getBoxs(): void {
     this.boxService.getBoxs()
       .subscribe(boxs => {
@@ -106,6 +113,7 @@ export class Page1Component implements OnInit {
       });
   }
 
+  // create items and their content, position, cols and rows
   private createDashboard(): void {
     this.dashboard = [
       { id: this.boxs[0].id, content: this.boxs[0].bodyText, x: 0, y: 0, cols: 1, rows: 2 },
@@ -115,6 +123,7 @@ export class Page1Component implements OnInit {
     ];
   }
 
+  // add new item 
   addBox() {
     this.boxService.addBox()
       .subscribe(box => {
@@ -130,34 +139,37 @@ export class Page1Component implements OnInit {
 
   }
 
+  // delete item
   removeItem($event, item) {
     $event.preventDefault();
     $event.stopPropagation();
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
   }
 
+  // select itemm to edit 
   onSelect(box: DashBoard): void {
     this.selectedBox = box;
   }
 
+  // when bodyText changed at Modal Component, the text of Page1 Component change
   changeText(bodyText: any) {
     bodyText = this.sanitizer.bypassSecurityTrustHtml(bodyText);
     this.selectedBox.content = bodyText;
   }
 
-  carousel(): void {
-    this.carouselState = this.carouselState === false ? true : false;
-    console.log(this.carouselState);
-    this.navigate();
-  }
+  // carousel(): void {
+  //   this.carouselState = this.carouselState === false ? true : false;
+  //   console.log(this.carouselState);
+  //   this.navigate();
+  // }
 
-  navigate(): void {
-    if(this.carouselState == true){
-      setTimeout((router: Router) => {
-        this.router.navigate(['dragdrop/page2']);
-      }, 5000);
-    }
-  }
+  // navigate(): void {
+  //   if(this.carouselState == true){
+  //     setTimeout((router: Router) => {
+  //       this.router.navigate(['dragdrop/page2']);
+  //     }, 5000);
+  //   }
+  // }
 
   
 }

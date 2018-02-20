@@ -10,6 +10,7 @@ import { Component, OnInit, Input,  } from '@angular/core';
 })
 export class ModalBoxComponent implements OnInit {
 
+  // input box and visible properties from Page3Component
   @Input() item;
   @Input() visible: boolean;
 
@@ -20,10 +21,12 @@ export class ModalBoxComponent implements OnInit {
   ngOnInit() {
   }
 
+  // close popup
   close(): void {
     this.visible = false;
   }
 
+  // edit content of item and send to dashboardService to handle
   editItem(text: any): void {
     this.item.content = text;
     this.dashboardService.editItem(this.item);

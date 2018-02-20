@@ -5,7 +5,6 @@ export const routerAnimation: AnimationEntryMetadata =
     state('*',
       style({
         opacity: 1,
-        // transform: 'translateX(0)',
         width: '100%',
         height: '100%'
       })
@@ -13,14 +12,12 @@ export const routerAnimation: AnimationEntryMetadata =
     transition(':enter', [
       style({
         opacity: 0,
-        // transform: 'translateX(100%)',
       }),
       animate(1500)
     ]),
     transition(':leave', [
       animate(1500, style({
         opacity: 0,
-        // transform: 'translateX(-100%)'
       }))
     ])
   ]);

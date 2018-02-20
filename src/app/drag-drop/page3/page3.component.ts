@@ -6,16 +6,16 @@ import { Item } from '../../shared/models/item';
 import { routerAnimation } from './../../shared/animations/router.animation';
 import { DashboardService } from './../../core/services/dashboard.service';
 import { NavigationService } from './../../core/services/navigation.service';
-import { fadeInAnimation } from './../../shared/animations/fadein.animation';
 
 @Component({
   selector: 'app-page3',
   templateUrl: './page3.component.html',
   styleUrls: ['./page3.component.scss'],
-  animations: [routerAnimation, fadeInAnimation]
+  animations: [routerAnimation]
 })
 export class Page3Component implements OnInit {
 
+  // Animation when navigation
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
@@ -37,7 +37,7 @@ export class Page3Component implements OnInit {
   ) {
     this.navigationState = this.navigationService.navigationState;
     this.navigate();
-    console.log('page3 contructor: ' + this.navigationState);
+    // console.log('page3 contructor: ' + this.navigationState);
   }
 
   ngOnInit() {
@@ -45,6 +45,7 @@ export class Page3Component implements OnInit {
     this.createOptions();
   }
 
+  // Create Grid option https://github.com/tiberiuzuld/angular-gridster2
   private createOptions(): void {
     this.options = {
       gridType: 'fit',
@@ -78,32 +79,38 @@ export class Page3Component implements OnInit {
     };
   }
 
+  // trigger after drag, drop or resize item
   eventStop(item, scope) {
     // console.info('eventStop', item, scope);
   }
 
+  // when item change position or cols, rows pass to dashboard2Service to handle
   itemChange(item, scope) {
     // console.info('itemChanged', item, scope);
     this.dashboardService.editItem(item);
   }
 
+  // trigger when resize rols, cols of item
   itemResize(item, scope) {
     // console.info('itemResized', item, scope);
   }
 
+  // trigger when initialization
   itemInit(item) {
     // console.info('itemInitialized', item);
   }
 
+  // Get data from firebase, call dashboardService
   getAll(): void {
     this.dashboardService.getAll()
       .subscribe(items => {
-        this.items = items;
+        // this.items = items;
         this.dashboard = items;
         // console.log(this.items);
       })
   }
 
+  // Add new Item 
   addItem(): void {
     let newItem: any = {
       content: ``,
@@ -113,18 +120,22 @@ export class Page3Component implements OnInit {
     this.dashboardService.addItem(newItem);
   }
 
+  //Delete Item
   removeItem($event, item) {
     this.dashboardService.removeItem(item);
   }
 
+  //Select Item 
   onSelect(item: Item): void {
     this.selectedItem = item;
   }
 
+  //trackBy ngFor
   trackByItems(index: number, item: Item) {
     return item.content;
   }
 
+  // set navigationState to navigate or not 
   setState(): void {
     this.navigationState = this.navigationState ? false : true;
     this.navigationService.updateNavigation();
@@ -139,6 +150,7 @@ export class Page3Component implements OnInit {
     }
   }
 
+  // wait 5s and navigate to page2 
   navigate(): void {
     if (this.navigationService.navigationState == true) {
       this.route = setTimeout((router: Router) => {

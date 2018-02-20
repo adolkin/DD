@@ -11,10 +11,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [popupAnimation]
 })
 export class ModalComponent implements OnInit {
-
+  
+  // input box and visible properties from page1Component
   @Input() box;
   @Input() visible: boolean;
 
+  // trigger event so page1Component change the bodyText
   @Output() bodyText: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
@@ -24,10 +26,12 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  // close the pop-up
   close(): void {
     this.visible = false;
   }
 
+  // edit bodyText and emit to page1Component
   editBox(text: any): void {
     var newBox: Box = {
       id : this.box.id,

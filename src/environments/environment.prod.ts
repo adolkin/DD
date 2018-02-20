@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyD3KPXfuXb_u3cQZ6CfUHfKSpIYcCW_9fI",
-    authDomain: "abacus-3103e.firebaseapp.com",
-    databaseURL: "https://abacus-3103e.firebaseio.com",
-    projectId: "abacus-3103e",
-    storageBucket: "abacus-3103e.appspot.com",
-    messagingSenderId: "237525236652"
+    apiKey: "AIzaSyCfFpHVlcTTRuszobzhlNK8qlFezkSkrDo",
+    authDomain: "drag-drop-8e584.firebaseapp.com",
+    databaseURL: "https://drag-drop-8e584.firebaseio.com",
+    projectId: "drag-drop-8e584",
+    storageBucket: "drag-drop-8e584.appspot.com",
+    messagingSenderId: "551309222816"
   }
 };

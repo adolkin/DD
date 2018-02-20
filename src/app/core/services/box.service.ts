@@ -18,6 +18,7 @@ export class BoxService {
     private http: HttpClient
   ) { }
 
+  // get data from InMemroyDBService.ts using HttpClientInMemoryWebApiModule
   getBoxs(): Observable<Box[]> {
     return this.http.get<Box[]>(this.url)
       .pipe(
@@ -25,6 +26,7 @@ export class BoxService {
       );
   }
 
+  //add data
   addBox(): Observable<Box> {
     let box = new Box;
     return this.http.post<Box>(this.url, box, httpOptions)
@@ -33,6 +35,7 @@ export class BoxService {
       );
   }
 
+  //edit data
   editBox(box: Box): Observable<Box> {
     return this.http.put<Box>(this.url, box, httpOptions)
       .pipe(

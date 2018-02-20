@@ -23,7 +23,7 @@ import { AppRoutingModule } from './/app-routing.module';
     DragDropModule,
     CoreModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, 'abacus'),
+    AngularFireModule.initializeApp(environment.firebase, 'drag-drop'),
     AngularFireDatabaseModule,
   ],
   providers: [],

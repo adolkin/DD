@@ -18,6 +18,7 @@ import { Modal2BoxComponent } from './modal2-box/modal2-box.component';
   imports: [
     DragDropRoutingModule,
     SharedModule,
+    // passThruUnknownUrl help application access to Firebase Url without conflict with InMemoryData Url 
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true })
   ],
   declarations: [DragDropComponent, ModalComponent, Page1Component, Page2Component, Page3Component, ModalBoxComponent, Modal2BoxComponent]
