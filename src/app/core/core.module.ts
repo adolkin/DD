@@ -7,13 +7,12 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/shared.module';
 
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-
-
+import { SettingComponent } from './components/setting/setting.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [ErrorPageComponent],
+  declarations: [ErrorPageComponent, SettingComponent],
   providers: [
     BoxService,
     DashboardService,
