@@ -9,19 +9,38 @@ import { NavigationService } from '@services/navigation.service';
 export class SettingComponent implements OnInit {
 
   hideEdit = true;
-  navigationTime: number;
+  navigationTime: any;
+  updateStatus: string = '';
 
   constructor( 
     private navigationService: NavigationService) { }
 
   ngOnInit() {
+    this.getNavigationTime();
   }
 
-  private openView() {
+  // Open View Mode in new tab
+  openView() {
     var newWindow = window.open('/view');
   }
 
-  private openEdit() {
+  // Hide/show Edit Mode
+  openEdit() {
     this.hideEdit = this.hideEdit === true ? false : true;
   }
+
+  // Get navigation time by calling navigation Service
+  getNavigationTime() {
+    this.navigationService.getNavigationTime()
+      .subscribe(time => {
+        this.navigationTime = <number>time / 1000;
+      });
+  }
+
+  // Update navigation time
+  setNavigtaionTime(time: any) {
+    this.updateStatus = "Updated";  
+    this.navigationService.setNavigtionTime(time * 1000);    
+  }
+
 }

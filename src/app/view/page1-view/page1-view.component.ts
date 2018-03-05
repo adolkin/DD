@@ -24,24 +24,22 @@ export class Page1ViewComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<any>;
 
-  navigationState: boolean;
   route: any;
 
   page: string = '/page1';
+  navigationTime: number;
 
   constructor(
     private dashboardService: DashboardService,
     private navigationService: NavigationService,
     private router: Router
-  ) {
-    this.navigationState = this.navigationService.navigationState;
+  ) {  
     this.navigate();
-    // console.log('page3 contructor: ' + this.navigationState);
   }
 
   ngOnInit() {
     this.getAll();
-    this.createOptions();
+    this.createOptions();  
   }
 
   // Create Grid option https://github.com/tiberiuzuld/angular-gridster2
@@ -90,27 +88,15 @@ export class Page1ViewComponent implements OnInit {
     return item.content;
   }
 
-  // set navigationState to navigate or not 
-  setState(): void {
-    this.navigationState = this.navigationState ? false : true;
-    this.navigationService.updateNavigation();
-
-    // console.log("page3 setState: " + this.navigationState);
-
-    if (this.navigationState == false) {
-      clearTimeout(this.route);
-    }
-    else {
-      this.navigate();
-    }
-  }
-
-  // wait 5s and navigate to page2 
+  // Get navigation time from Firbase and navigate to page2 
   navigate(): void {
-    if (this.navigationService.navigationState == true) {
+    this.navigationService.getNavigationTime()
+    .subscribe(data => {
+      this.navigationTime = <number>data;
+      console.log(this.navigationTime);
       this.route = setTimeout((router: Router) => {
         this.router.navigate(['view/page2']);
-      }, 5000);
-    }
+      }, this.navigationTime);
+    });
   }
 }
