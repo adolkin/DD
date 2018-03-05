@@ -6,7 +6,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { SharedModule } from './shared/shared.module';
-import { DragDropModule } from './drag-drop/drag-drop.module';
 import { CoreModule } from './core/core.module';
 import { EditModule } from './edit/edit.module';
 import { ViewModule } from './view/view.module';
@@ -21,7 +20,6 @@ import { AppRoutingModule } from './/app-routing.module';
   imports: [
     BrowserModule,
     SharedModule,
-    DragDropModule,
     CoreModule,
     ViewModule,
     EditModule,
