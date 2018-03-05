@@ -25,7 +25,6 @@ export class DashboardService {
 
   // edit data to Firebase under list page3
   editItem(page:string, item: Item) {
-    console.log(page);
     return this.db.object(page + '/' + item.key)
       .update(item);
   }

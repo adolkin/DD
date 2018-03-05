@@ -1,3 +1,9 @@
-<p>
-  edit-content works!
-</p>
+<div [@dialog] *ngIf="visible" class="dialog">
+  <div class="navigate">
+    <button class="btn btn-sm btn-danger" (click)="editItem(text.value)">Save</button>
+    <button class="btn btn-sm" (click)="close()">Cancel</button>
+  </div>
+  <div class="content">
+    <textarea [innerHTML]="item.content" #text></textarea>
+  </div>
+</div>

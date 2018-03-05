@@ -25,6 +25,7 @@ export class Page1EditComponent implements OnInit {
   dashboard: Array<any>;
   selectedItem: Item;
 
+  showDialog = false;
   page: string = '/page1';
 
   constructor(

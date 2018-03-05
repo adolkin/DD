@@ -1,12 +1,12 @@
 <gridster [options]="options">
-    <gridster-item [item]="item" *ngFor="let item of dashboard; trackBy: trackByItems">
-      <div class="button-box">
-        <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
-        <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
-      </div>
-      <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
-      </div>
-    </gridster-item>
-  </gridster>
-  <!-- <app-modal-box [(visible)]="showDialog" [item]="selectedItem" (bodyText)="changeText($event)"></app-modal-box> -->
-  
+  <gridster-item [item]="item" *ngFor="let item of dashboard; trackBy: trackByItems">
+    <div class="button-box">
+      <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
+      <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>
+    </div>
+    <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
+    </div>
+  </gridster-item>
+</gridster>
+<app-edit-content [(visible)]="showDialog" [item]="selectedItem" [page]="page" (bodyText)="changeText($event)"></app-edit-content>
+
