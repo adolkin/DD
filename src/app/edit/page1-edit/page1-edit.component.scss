@@ -1,0 +1,16 @@
+.gridster-item-content {
+  height: 100%;
+  width: 100%;
+}
+
+.button-box {
+  text-align: right;
+  border-bottom: 2px solid black;
+  padding: 5px;
+  background-color: #424DB0;
+  display: none;
+}
+
+gridster-item:hover > .button-box {
+  display: block;
+}

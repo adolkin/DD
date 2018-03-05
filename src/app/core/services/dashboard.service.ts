@@ -11,7 +11,6 @@ export class DashboardService {
 
   //get data from Firebase under list page3
   getAll(page:string) {
-    console.log(page);
     return this.db.list(page)
     //get key and bind to item.key
       .snapshotChanges().map(actions => {
@@ -20,19 +19,19 @@ export class DashboardService {
   }
 
   // add data to Firebase under list page3
-  addItem(item: any) {
-    return this.db.list('/page3').push(item);
+  addItem(page:string, item: any) {
+    return this.db.list(page).push(item);
   } 
 
   // edit data to Firebase under list page3
-  editItem(item: Item) {
-    return this.db.object('/page3/' + item.key)
+  editItem(page:string, item: Item) {
+    return this.db.object(page + item.key)
       .update(item);
   }
 
   // delete data to Firebase under list page3
-  removeItem(item: Item) {
-    return this.db.object('/page3/' + item.key)
+  removeItem(page:string, item: Item) {
+    return this.db.object(page + item.key)
       .remove()
       .then(x => console.log(item.key + "deleted"));
   }
