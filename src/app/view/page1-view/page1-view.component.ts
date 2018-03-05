@@ -22,10 +22,8 @@ export class Page1ViewComponent implements OnInit {
 
   items: Item[] = [];
   options: GridsterConfig;
-  dashboard: Array<any>;
 
   route: any;
-
   page: string = '/page1';
   navigationTime: number;
 
@@ -33,13 +31,13 @@ export class Page1ViewComponent implements OnInit {
     private dashboardService: DashboardService,
     private navigationService: NavigationService,
     private router: Router
-  ) {  
+  ) {
     this.navigate();
   }
 
   ngOnInit() {
     this.getAll();
-    this.createOptions();  
+    this.createOptions();
   }
 
   // Create Grid option https://github.com/tiberiuzuld/angular-gridster2
@@ -72,14 +70,11 @@ export class Page1ViewComponent implements OnInit {
     };
   }
 
-
   // Get data from firebase, call dashboardService
   getAll(): void {
     this.dashboardService.getAll(this.page)
       .subscribe(items => {
-        // this.items = items;
-        this.dashboard = items;
-        // console.log(this.items);
+        this.items = items;
       })
   }
 
@@ -91,12 +86,11 @@ export class Page1ViewComponent implements OnInit {
   // Get navigation time from Firbase and navigate to page2 
   navigate(): void {
     this.navigationService.getNavigationTime()
-    .subscribe(data => {
-      this.navigationTime = <number>data;
-      console.log(this.navigationTime);
-      this.route = setTimeout((router: Router) => {
-        this.router.navigate(['view/page2']);
-      }, this.navigationTime);
-    });
+      .subscribe(data => {
+        this.navigationTime = <number>data;
+        this.route = setTimeout((router: Router) => {
+          this.router.navigate(['view/page2']);
+        }, this.navigationTime);
+      });
   }
 }

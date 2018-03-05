@@ -5,24 +5,16 @@ import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { Item } from '@models/item';
 import { DashboardService } from '@services/dashboard.service';
 import { NavigationService } from '@services/navigation.service';
-import { routerAnimation } from '@animations/router.animation';
 
 @Component({
   selector: 'app-page2-edit',
   templateUrl: './page2-edit.component.html',
   styleUrls: ['./page2-edit.component.scss'],
-  animations: [routerAnimation]
 })
 export class Page2EditComponent implements OnInit {
 
-  // Animation when navigation
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display') display = 'block';
-  @HostBinding('style.position') position = 'absolute';
-
   items: Item[] = [];
   options: GridsterConfig;
-  dashboard: Array<any>;
   selectedItem: Item;
 
   page: string = '/page2';
@@ -44,7 +36,6 @@ export class Page2EditComponent implements OnInit {
       compactLeft: false,
       itemChangeCallback: this.itemChange.bind(this),
       itemResizeCallback: this.itemResize,
-      enableEmptyCellContextMenu: true,
       margin: 1,
       outerMargin: true,
       maxItemCols: 50,
@@ -55,6 +46,8 @@ export class Page2EditComponent implements OnInit {
       defaultItemRows: 1,
       fixedColWidth: 250,
       fixedRowHeight: 250,
+      enableEmptyCellContextMenu: true,
+      emptyCellContextMenuCallback: this.emptyCellClick.bind(this),
       draggable: {
         delayStart: 0,
         enabled: true,
@@ -67,7 +60,8 @@ export class Page2EditComponent implements OnInit {
         enabled: true,
         stop: this.eventStop
       },
-      swap: false
+      swap: false,
+      displayGrid: 'always',
     };
   }
 
@@ -92,22 +86,26 @@ export class Page2EditComponent implements OnInit {
     // console.info('itemInitialized', item);
   }
 
-  // Get data from firebase, call dashboardService
-  getAll(): void {
-    this.dashboardService.getAll(this.page)
-      .subscribe(items => {
-        this.dashboard = items;
-      })
-  }
-
-  // Add new Item 
-  addItem(): void {
+  // Right click to add new item
+  emptyCellClick(event: MouseEvent, item: GridsterItem) {
+    //console.info('empty cell click', event, item);
     let newItem: any = {
       content: ``,
       rows: 1,
       cols: 1,
+      x: item.x,
+      y: item.y
     }
+    //console.log(newItem);
     this.dashboardService.addItem(this.page, newItem);
+  }
+
+  // Get data from firebase, call dashboardService
+  getAll(): void {
+    this.dashboardService.getAll(this.page)
+      .subscribe(items => {
+        this.items = items;
+      })
   }
 
   //Delete Item
@@ -124,6 +122,4 @@ export class Page2EditComponent implements OnInit {
   trackByItems(index: number, item: Item) {
     return item.content;
   }
-
-
 }

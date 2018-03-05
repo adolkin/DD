@@ -10,15 +10,9 @@ import { routerAnimation } from '@animations/router.animation';
 @Component({
   selector: 'app-page1-edit',
   templateUrl: './page1-edit.component.html',
-  styleUrls: ['./page1-edit.component.scss'],
-  animations: [routerAnimation]
+  styleUrls: ['./page1-edit.component.scss']
 })
 export class Page1EditComponent implements OnInit {
-
-  // Animation when navigation
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display') display = 'block';
-  @HostBinding('style.position') position = 'absolute';
 
   items: Item[] = [];
   options: GridsterConfig;
@@ -45,7 +39,6 @@ export class Page1EditComponent implements OnInit {
       compactLeft: false,
       itemChangeCallback: this.itemChange.bind(this),
       itemResizeCallback: this.itemResize,
-      enableEmptyCellContextMenu: true,
       margin: 1,
       outerMargin: true,
       maxItemCols: 50,
@@ -56,6 +49,8 @@ export class Page1EditComponent implements OnInit {
       defaultItemRows: 1,
       fixedColWidth: 250,
       fixedRowHeight: 250,
+      enableEmptyCellContextMenu: true,
+      emptyCellContextMenuCallback: this.emptyCellClick.bind(this),
       draggable: {
         delayStart: 0,
         enabled: true,
@@ -68,7 +63,8 @@ export class Page1EditComponent implements OnInit {
         enabled: true,
         stop: this.eventStop
       },
-      swap: false
+      swap: false,
+      displayGrid: 'always',
     };
   }
 
@@ -93,22 +89,26 @@ export class Page1EditComponent implements OnInit {
     // console.info('itemInitialized', item);
   }
 
-  // Get data from firebase, call dashboardService
-  getAll(): void {
-    this.dashboardService.getAll(this.page)
-      .subscribe(items => {
-        this.dashboard = items;
-      })
-  }
-
-  // Add new Item 
-  addItem(): void {
+  // Right click to add new item
+  emptyCellClick(event: MouseEvent, item: GridsterItem) {
+    //console.info('empty cell click', event, item);
     let newItem: any = {
       content: ``,
       rows: 1,
       cols: 1,
+      x: item.x,
+      y: item.y
     }
+    //console.log(newItem);
     this.dashboardService.addItem(this.page, newItem);
+  }
+
+  // Get data from firebase, call dashboardService
+  getAll(): void {
+    this.dashboardService.getAll(this.page)
+      .subscribe(items => {
+        this.items = items;
+      })
   }
 
   //Delete Item
@@ -125,5 +125,4 @@ export class Page1EditComponent implements OnInit {
   trackByItems(index: number, item: Item) {
     return item.content;
   }
-
 }

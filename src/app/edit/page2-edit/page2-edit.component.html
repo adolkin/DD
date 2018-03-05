@@ -1,5 +1,5 @@
 <gridster [options]="options">
-  <gridster-item [item]="item" *ngFor="let item of dashboard; trackBy: trackByItems">
+  <gridster-item [item]="item" *ngFor="let item of items; trackBy: trackByItems">
     <div class="button-box">
       <button (click)="showDialog = !showDialog; onSelect(item)" class="btn btn-default btn-sm glyphicon glyphicon-fullscreen"></button>
       <button (click)="removeItem($event, item)" class="btn btn-default btn-sm glyphicon glyphicon glyphicon-trash"></button>

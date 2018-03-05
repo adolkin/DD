@@ -15,7 +15,6 @@ import { routerAnimation } from '@animations/router.animation';
 })
 export class Page2ViewComponent implements OnInit {
 
-
   // Animation when navigation
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -23,7 +22,6 @@ export class Page2ViewComponent implements OnInit {
 
   items: Item[] = [];
   options: GridsterConfig;
-  dashboard: Array<any>;
 
   route: any;
 
@@ -78,9 +76,7 @@ export class Page2ViewComponent implements OnInit {
   getAll(): void {
     this.dashboardService.getAll(this.page)
       .subscribe(items => {
-        // this.items = items;
-        this.dashboard = items;
-        // console.log(this.items);
+        this.items = items;
       })
   }
 
@@ -95,7 +91,6 @@ export class Page2ViewComponent implements OnInit {
     this.navigationService.getNavigationTime()
     .subscribe(data => {
       this.navigationTime = <number>data;
-      console.log(this.navigationTime);
       this.route = setTimeout((router: Router) => {
         this.router.navigate(['view/page1']);
       }, this.navigationTime);
