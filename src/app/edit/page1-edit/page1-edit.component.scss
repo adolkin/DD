@@ -16,5 +16,9 @@ gridster-item:hover>.button-box {
 }
 
 gridster-item .my-div {
-  pointer-events: none;
+  // pointer-events: none;
 }
+
+// .my-drag-in-progress gridster-item .my-div {
+//   pointer-events: initial;
+// }

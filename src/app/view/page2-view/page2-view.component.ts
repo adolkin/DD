@@ -71,7 +71,6 @@ export class Page2ViewComponent implements OnInit {
     };
   }
 
-
   // Get data from firebase, call dashboardService
   getAll(): void {
     this.dashboardService.getAll(this.page)
@@ -79,12 +78,6 @@ export class Page2ViewComponent implements OnInit {
         this.items = items;
       })
   }
-
-  //trackBy ngFor
-  trackByItems(index: number, item: Item) {
-    return item.content;
-  }
-
 
   // Get navigation time from Firbase and navigate to page2 
   navigate(): void {

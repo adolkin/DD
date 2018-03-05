@@ -1,5 +1,5 @@
 <gridster [options]="options">
-  <gridster-item [item]="item" *ngFor="let item of items; trackBy: trackByItems">
+  <gridster-item [item]="item" *ngFor="let item of items">
     <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
     </div>
   </gridster-item>

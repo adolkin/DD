@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridsterModule } from 'angular-gridster2';
 import { RouterModule } from '@angular/router';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { WeatherComponent } from './components/weather/weather.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     RouterModule
   ],
   declarations: [
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    WeatherComponent
   ],
   exports: [
     CommonModule,

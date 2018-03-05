@@ -4,16 +4,16 @@
     <button class="btn btn-primary" (click)="openView()">View Mode</button>
     <br>
     <br>
-    <div [hidden]="hideEdit">
+    <div [hidden]="hideEdit" class="form-horizontal">
       <a routerLink="/edit/page1">Edit Page 1</a>
       <br>
       <a routerLink="/edit/page2">Edit Page 2</a>
       <br>
       <br>
-      <div class="row">
-        <label class="col-sm-2">Set navigation time:</label>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="time">Set navigation time:</label>
         <div class="col-sm-2 input-group">
-          <input type="text" class="form-control" [(ngModel)]="navigationTime">
+          <input type="text" class="form-control" id="time" [(ngModel)]="navigationTime">
           <span class="input-group-addon">seconds</span>
         </div>
       </div>

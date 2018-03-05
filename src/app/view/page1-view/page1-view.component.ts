@@ -78,11 +78,6 @@ export class Page1ViewComponent implements OnInit {
       })
   }
 
-  //trackBy ngFor
-  trackByItems(index: number, item: Item) {
-    return item.content;
-  }
-
   // Get navigation time from Firbase and navigate to page2 
   navigate(): void {
     this.navigationService.getNavigationTime()
