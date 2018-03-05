@@ -5,15 +5,28 @@
       <img src="{{weather.current_observation.icon_url}}" alt="Weather Icon">
     </div>
     <h3>{{weather.current_observation.weather}}</h3>
-    <h1>{{weather.current_observation.temp_f}}&deg;</h1>
+    <h1>{{weather.current_observation.temp_c}}&deg;C</h1>
   </div>
   <div class="row">
     <ul class="list-group">
-      <li class="list-group-item"><strong>Temp: </strong> {{weather.current_observation.temperature_string}}</li>
-      <li class="list-group-item"><strong>Relative Humidity: </strong> {{weather.current_observation.relative_humidity}}</li>
-      <li class="list-group-item"><strong>Dewpoint: </strong> {{weather.current_observation.dewpoint_string}}</li>
-      <li class="list-group-item"><strong>Visibility: </strong> {{weather.current_observation.visibility_mi}}</li>
-      <li class="list-group-item"><strong>Heat Index: </strong> {{weather.current_observation.heat_index_string}}</li>
+      <li class="list-group-item">
+        <strong>City: </strong> {{weather.current_observation.display_location.city}} </li>
+      <li class="list-group-item">
+        <strong>State: </strong> {{weather.current_observation.display_location.state_name}} </li>
+      <li class="list-group-item">
+        <strong>Country: </strong> {{weather.current_observation.display_location.country}} </li>
+      <li class="list-group-item">
+        <strong>Local time: </strong> {{weather.current_observation.local_time_rfc822 | date:'full'}} </li>
+      <li class="list-group-item">
+        <strong>Relative Humidity: </strong> {{weather.current_observation.relative_humidity}} </li>
+      <li class="list-group-item">
+        <strong>Dewpoint: </strong> {{weather.current_observation.dewpoint_string}} </li>
+      <li class="list-group-item">
+        <strong>Visibility: </strong> {{weather.current_observation.visibility_km}} Km</li>
+      <li class="list-group-item">
+        <strong>Soil Moisture: </strong> {{weather.current_observation.soil_moisture}} </li>
+      <li class="list-group-item">
+        <strong>Wind: </strong> {{weather.current_observation.wind_kph}} Kph </li>
     </ul>
   </div>
 </div>
