@@ -1,3 +1,19 @@
-<p>
-  weather works!
-</p>
+<div class="container-fluid" *ngIf="weather">
+  <div class="row text-center">
+    <h2>{{weather.current_observation.display_location.full}}</h2>
+    <div>
+      <img src="{{weather.current_observation.icon_url}}" alt="Weather Icon">
+    </div>
+    <h3>{{weather.current_observation.weather}}</h3>
+    <h1>{{weather.current_observation.temp_f}}&deg;</h1>
+  </div>
+  <div class="row">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Temp: </strong> {{weather.current_observation.temperature_string}}</li>
+      <li class="list-group-item"><strong>Relative Humidity: </strong> {{weather.current_observation.relative_humidity}}</li>
+      <li class="list-group-item"><strong>Dewpoint: </strong> {{weather.current_observation.dewpoint_string}}</li>
+      <li class="list-group-item"><strong>Visibility: </strong> {{weather.current_observation.visibility_mi}}</li>
+      <li class="list-group-item"><strong>Heat Index: </strong> {{weather.current_observation.heat_index_string}}</li>
+    </ul>
+  </div>
+</div>

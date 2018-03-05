@@ -28,7 +28,8 @@ import { WeatherComponent } from './components/weather/weather.component';
     BrowserAnimationsModule,
     GridsterModule,
     RouterModule,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    WeatherComponent
   ]
 })
 export class SharedModule { }
