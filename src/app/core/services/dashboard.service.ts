@@ -10,8 +10,9 @@ export class DashboardService {
   ) { }
 
   //get data from Firebase under list page3
-  getAll() {
-    return this.db.list('/page3')
+  getAll(page:string) {
+    console.log(page);
+    return this.db.list(page)
     //get key and bind to item.key
       .snapshotChanges().map(actions => {
         return actions.map(action => ({ key: action.key, ...action.payload.val() })); 

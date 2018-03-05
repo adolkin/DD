@@ -12,4 +12,11 @@ export class SettingComponent implements OnInit {
   ngOnInit() {
   }
 
+  private openView() {
+
+  }
+
+  private openEdit() {
+    
+  }
 }

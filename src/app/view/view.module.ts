@@ -11,6 +11,9 @@ import { Page2ViewComponent } from './page2-view/page2-view.component';
     SharedModule,
     ViewRoutingModule
   ],
-  declarations: [Page1ViewComponent, Page2ViewComponent]
+  declarations: [
+    Page1ViewComponent, 
+    Page2ViewComponent
+  ]
 })
 export class ViewModule { }
