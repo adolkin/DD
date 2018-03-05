@@ -11,6 +11,10 @@
   display: none;
 }
 
-gridster-item:hover > .button-box {
+gridster-item:hover>.button-box {
   display: block;
+}
+
+gridster-item .my-div {
+  pointer-events: none;
 }
