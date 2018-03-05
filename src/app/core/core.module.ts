@@ -11,8 +11,12 @@ import { SettingComponent } from './components/setting/setting.component';
 
 @NgModule({
   imports: [
+    SharedModule
   ],
-  declarations: [ErrorPageComponent, SettingComponent],
+  declarations: [
+    ErrorPageComponent, 
+    SettingComponent
+  ],
   providers: [
     BoxService,
     DashboardService,

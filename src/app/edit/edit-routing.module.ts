@@ -17,7 +17,6 @@ const editRoutes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(editRoutes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(editRoutes)]
 })
 export class EditRoutingModule { }

@@ -16,7 +16,6 @@ const viewRoutes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(viewRoutes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(viewRoutes)]
 })
 export class ViewRoutingModule { }

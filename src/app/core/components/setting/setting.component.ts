@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '@services/navigation.service';
 
 @Component({
   selector: 'app-setting',
@@ -7,16 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingComponent implements OnInit {
 
-  constructor() { }
+  hideEdit = true;
+  navigationTime: number;
+
+  constructor( 
+    private navigationService: NavigationService) { }
 
   ngOnInit() {
   }
 
   private openView() {
-
+    var newWindow = window.open('/view');
   }
 
   private openEdit() {
-    
+    this.hideEdit = this.hideEdit === true ? false : true;
   }
 }

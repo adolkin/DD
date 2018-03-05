@@ -25,13 +25,14 @@ export class DashboardService {
 
   // edit data to Firebase under list page3
   editItem(page:string, item: Item) {
-    return this.db.object(page + item.key)
+    console.log(page);
+    return this.db.object(page + '/' + item.key)
       .update(item);
   }
 
   // delete data to Firebase under list page3
   removeItem(page:string, item: Item) {
-    return this.db.object(page + item.key)
+    return this.db.object(page + '/' + item.key)
       .remove()
       .then(x => console.log(item.key + "deleted"));
   }

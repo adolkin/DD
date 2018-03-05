@@ -20,7 +20,6 @@ const dragDropRoutes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(dragDropRoutes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(dragDropRoutes)]
 })
 export class DragDropRoutingModule { }

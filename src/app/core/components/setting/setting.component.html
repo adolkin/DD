@@ -2,11 +2,11 @@
   <div class="jumbotron">
     <button class="btn btn-primary" (click)="openEdit()">Edit Mode</button>
     <button class="btn btn-primary" (click)="openView()">View Mode</button>
-
-    <div>
-        <a routerLink="/edit/page1">Edit Page 1</a>
-        <a routerLink="/edit/page2">Edit Page 2</a>
-        <p>Set navigation time: </p>
+    <br><br>
+    <div [hidden]="hideEdit">
+        <a routerLink="/edit/page1">Edit Page 1</a> <br>
+        <a routerLink="/edit/page2">Edit Page 2</a> <br>
+        <label>Set navigation time:</label> <input type="text">
     </div>
   </div>
 </div>
