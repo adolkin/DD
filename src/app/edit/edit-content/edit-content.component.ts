@@ -16,23 +16,38 @@ export class EditContentComponent implements OnInit {
   @Input() item;
   @Input() visible: boolean;
 
+  weatherView = false;
+  htmlView = true;
+
   constructor(
     private dashboardService: DashboardService
   ) { }
 
   ngOnInit() {
-    console.log(this.page);
+  }
+
+  weather() {
+    this.weatherView = true;
+    this.htmlView = false;
+  }
+
+  html() {
+    this.weatherView = false;
+    this.htmlView = true;
   }
 
   // close popup
   close(): void {
     this.visible = false;
+    this.weatherView = false;
   }
 
   // edit content of item and send to dashboardService to handle
   editItem(text: any): void {
+    console.log(text);
     this.item.content = text;
     this.dashboardService.editItem(this.page, this.item);
     this.visible = false;
+    this.weatherView = false;
   }
 }

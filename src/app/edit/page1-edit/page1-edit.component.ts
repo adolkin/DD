@@ -119,6 +119,7 @@ export class Page1EditComponent implements OnInit {
   //Select Item 
   onSelect(item: Item): void {
     this.selectedItem = item;
+    console.log(this.selectedItem);
   }
 
   //trackBy ngFor

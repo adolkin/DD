@@ -1,10 +1,19 @@
 <div [@dialog] *ngIf="visible" class="dialog">
   <div class="navigate">
-    <button>Weather</button>
-    <button class="btn btn-sm btn-danger" (click)="editItem(text.value)">Save</button>
-    <button class="btn btn-sm" (click)="close()">Cancel</button>
+    <button class="btn btn-sm" (click)="html()">HTML</button>
+    <button class="btn btn-sm" (click)="weather()">Weather</button>
+    <button class="btn btn-sm edit" (click)="close()">Cancel</button>
+    <button class="btn btn-sm btn-danger edit" (click)="editItem(text.value)">Save</button>
   </div>
   <div class="content">
-    <textarea [innerHTML]="item.content" #text></textarea>
+    <!-- <ng-container *ngIf="htmlView"> -->
+    <textarea [innerHTML]="item.content" #text>
+    </textarea>
+    <!-- </ng-container> -->
+
+
+  </div>
+  <div *ngIf="weatherView" class="content">
+    <input type="text" class="form-control">
   </div>
 </div>

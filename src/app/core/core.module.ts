@@ -4,6 +4,8 @@ import { SharedModule } from '@shared/shared.module';
 import { DashboardService } from '@services/dashboard.service';
 import { NavigationService } from '@services/navigation.service';
 import { WeatherService } from '@services/weather.service';
+import { AuthGuardService } from '@services/auth-guard.service';
+import { AuthService } from '@services/auth.service';
 
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { SettingComponent } from './components/setting/setting.component';
@@ -14,12 +16,14 @@ import { SettingComponent } from './components/setting/setting.component';
   ],
   declarations: [
     ErrorPageComponent, 
-    SettingComponent
+    SettingComponent,
   ],
   providers: [
     DashboardService,
     NavigationService,
-    WeatherService
+    WeatherService,
+    AuthService,
+    AuthGuardService
   ]
 })
 export class CoreModule { }
