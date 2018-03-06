@@ -15,10 +15,12 @@ export class SignupService {
   createUser(formData: any) {
     // console.log(formData);
     this.afAuth.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
-      .catch(function (error) {
-        console.log(error);
-        var errorCode = error.code;
-        var errorMessage = error.message;
+      .then((success) => {
+        console.log('uid', success.uid);
+        this.router.navigate(['/login']);
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 }

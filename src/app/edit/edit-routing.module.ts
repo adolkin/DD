@@ -1,6 +1,7 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { AuthGuardService } from '@services/auth-guard.service';
 
 import { Page1EditComponent } from './page1-edit/page1-edit.component';
 import { Page2EditComponent } from './page2-edit/page2-edit.component';
@@ -8,6 +9,7 @@ import { Page2EditComponent } from './page2-edit/page2-edit.component';
 const editRoutes: Routes = [
   {
     path: 'edit',
+    canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'page1', pathMatch: 'full'},
       { path: 'page1', component: Page1EditComponent },

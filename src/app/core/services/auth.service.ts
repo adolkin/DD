@@ -7,19 +7,32 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
+  isLoggedIn = false;
+  redirectUrl: string;
+
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router) { }
 
   customLogin() {
-    
+
   }
 
   googleLogin() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((success) => {
+        console.log(success);
+        localStorage.setItem('user', success.user.email);
+        this.isLoggedIn = true;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   logout() {
     this.afAuth.auth.signOut();
+    this.isLoggedIn = false;
+    localStorage.removeItem('user');
   }
 }
