@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  customLogin() {
-    this.authService.customLogin();
+  customLogin(formData) {
+    if (formData.valid) {
+      this.authService.customLogin(formData);
+    }
   }
 
   googleLogin() {

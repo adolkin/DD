@@ -14,9 +14,18 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private router: Router) {
   }
-  
-  customLogin() {
 
+  customLogin(formData: any) {
+    this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
+      .then((success) => {
+        console.log(success);
+        localStorage.setItem('user', success.email);
+        this.isLoggedIn = true;
+        this.router.navigate(['/setting']);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   googleLogin() {
