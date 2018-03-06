@@ -4,7 +4,6 @@ import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 import { Item } from '@models/item';
 import { DashboardService } from '@services/dashboard.service';
-import { NavigationService } from '@services/navigation.service';
 import { routerAnimation } from '@animations/router.animation';
 
 @Component({

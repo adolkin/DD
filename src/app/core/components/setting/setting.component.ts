@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '@services/navigation.service';
+
 import { AuthService } from '@services/auth.service';
+import { SettingService } from '@services/setting.service';
+import { Setting } from '@models/setting';
 
 @Component({
   selector: 'app-setting',
@@ -9,18 +11,21 @@ import { AuthService } from '@services/auth.service';
 })
 export class SettingComponent implements OnInit {
 
+  setting: any;
   hideEdit = true;
   navigationTime: any;
+  page1Background: string = '';
+  page2Background: string = '';
   updateStatus: string = '';
   userName: any;
 
-  constructor( 
-    private navigationService: NavigationService,
+  constructor(
+    private settingService: SettingService,
     private authService: AuthService) { }
 
   ngOnInit() {
-    this.getNavigationTime();
     this.getUser();
+    this.getSetting();
   }
 
   getUser() {
@@ -42,18 +47,18 @@ export class SettingComponent implements OnInit {
     this.hideEdit = this.hideEdit === true ? false : true;
   }
 
-  // Get navigation time by calling navigation Service
-  getNavigationTime() {
-    this.navigationService.getNavigationTime()
-      .subscribe(time => {
-        this.navigationTime = <number>time / 1000;
-      });
+  getSetting() {
+    this.settingService.getSetting()
+      .subscribe(setting => {
+        this.setting = setting;
+        console.log(this.setting);
+        this.navigationTime = <number>this.setting.navigationTime / 1000;
+        this.page1Background = this.setting.page1Background;
+        this.page2Background = this.setting.page2Background;      
+      })
   }
 
-  // Update navigation time
-  setNavigtaionTime(time: any) {
-    this.updateStatus = "Updated";  
-    this.navigationService.setNavigtionTime(time * 1000);    
+  setSetting(formData) {
+    this.settingService.setSetting(formData);
   }
-
 }

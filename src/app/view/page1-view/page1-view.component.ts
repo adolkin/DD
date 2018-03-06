@@ -4,7 +4,7 @@ import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 
 import { Item } from '@models/item';
 import { DashboardService } from '@services/dashboard.service';
-import { NavigationService } from '@services/navigation.service';
+import { SettingService } from '@services/setting.service';
 import { routerAnimation } from '@animations/router.animation';
 
 @Component({
@@ -29,7 +29,7 @@ export class Page1ViewComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private navigationService: NavigationService,
+    private settingService: SettingService,
     private router: Router
   ) {
     this.navigate();
@@ -80,7 +80,7 @@ export class Page1ViewComponent implements OnInit {
 
   // Get navigation time from Firbase and navigate to page2 
   navigate(): void {
-    this.navigationService.getNavigationTime()
+    this.settingService.getNavigationTime()
       .subscribe(data => {
         this.navigationTime = <number>data;
         this.route = setTimeout((router: Router) => {

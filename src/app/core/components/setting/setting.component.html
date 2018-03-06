@@ -1,25 +1,40 @@
 <div class="container">
   <div class="jumbotron">
-    <h4>Welcome {{userName}} <a href="#"(click)="logout()">Logout</a></h4>   
-    <button class="btn btn-primary" (click)="openEdit()">Edit Mode</button>
-    <button class="btn btn-primary" (click)="openView()">View Mode</button>
-    <br>
-    <br>
-    <div [hidden]="hideEdit" class="form-horizontal">
-      <a routerLink="/edit/page1">Edit Page 1</a>
-      <br>
-      <a routerLink="/edit/page2">Edit Page 2</a>
-      <br>
-      <br>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="time">Set navigation time:</label>
-        <div class="col-sm-2 input-group">
-          <input type="text" class="form-control" id="time" [(ngModel)]="navigationTime">
-          <span class="input-group-addon">seconds</span>
+    <h4>Welcome {{userName}}
+      <a href="#" (click)="logout()">Logout</a>
+    </h4>
+    <button class="btn btn-default" (click)="openEdit()">Edit Mode</button>
+    <button class="btn btn-default" (click)="openView()">View Mode</button>
+
+    <div [hidden]="hideEdit" class="form-horizontal edit">
+      <form #formData='ngForm' (ngSubmit)="setSetting(formData)">
+        <div class="form-group row">
+          <a routerLink="/edit/page1" class="col-md-2">Edit Page 1</a>
+          <label for="page1" class="col-md-2 col-form-label">Set Background Page1:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="page1" [(ngModel)]="page1Background" name="page1Background">
+          </div>
         </div>
-      </div>
-      <button class="btn btn-success" (click)="setNavigtaionTime(navigationTime)">Change Time</button>
-      <span>{{updateStatus}}</span>
+        <div class="form-group row">
+          <a routerLink="/edit/page2" class="col-md-2">Edit Page 2</a>
+          <label for="page2" class="col-md-2 col-form-label">Set Background Page2:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="page2" [(ngModel)]="page2Background" name="page2Background">
+          </div>
+        </div>
+        <div class="form-group row">
+          <span class="col-md-2"></span>
+          <label for="time" class="col-md-2 col-form-label">Set navigation time:</label>
+          <div class="col-md-3">
+            <div class="input-group">
+              <input type="text" class="form-control" id="time" [(ngModel)]="navigationTime" name="navigationTime">
+              <span class="input-group-addon">seconds</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary setting-button">Save Settings</button>
+        <span>{{updateStatus}}</span>
+      </form>
     </div>
   </div>
 </div>
