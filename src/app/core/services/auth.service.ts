@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(
+    public afAuth: AngularFireAuth,
+    private router: Router) { }
 
   customLogin() {
-
+    
   }
 
   googleLogin() {
