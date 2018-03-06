@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '@services/navigation.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-setting',
@@ -11,12 +12,24 @@ export class SettingComponent implements OnInit {
   hideEdit = true;
   navigationTime: any;
   updateStatus: string = '';
+  userName: any;
 
   constructor( 
-    private navigationService: NavigationService) { }
+    private navigationService: NavigationService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.getNavigationTime();
+    this.getUser();
+  }
+
+  getUser() {
+    this.userName = localStorage.getItem('user');
+    console.log(this.userName);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   // Open View Mode in new tab

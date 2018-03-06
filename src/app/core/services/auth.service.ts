@@ -12,8 +12,9 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    private router: Router) { }
-
+    private router: Router) {
+  }
+  
   customLogin() {
 
   }
@@ -21,9 +22,11 @@ export class AuthService {
   googleLogin() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((success) => {
-        console.log(success);
+        // console.log(success);
         localStorage.setItem('user', success.user.email);
         this.isLoggedIn = true;
+        window.location.reload();
+        this.router.navigate(['/setting']);
       })
       .catch((err) => {
         console.log(err);
@@ -34,5 +37,6 @@ export class AuthService {
     this.afAuth.auth.signOut();
     this.isLoggedIn = false;
     localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }
