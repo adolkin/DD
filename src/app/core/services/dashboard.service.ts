@@ -18,6 +18,10 @@ export class DashboardService {
       })
   }
 
+  getItem(page:string, key: any) {
+    return this.db.object(page + '/' + key).valueChanges();
+  }
+
   // add data to Firebase under list page3
   addItem(page:string, item: any) {
     return this.db.list(page).push(item);

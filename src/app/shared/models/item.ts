@@ -5,7 +5,6 @@ export class Item {
   rows: number;
   cols: number;
   content: any;
-  type: string;
   background: string;
   city: string;
   state: string;

@@ -2,23 +2,44 @@
   <form #itemForm="ngForm" (ngSubmit)="editItem(item)">
     <div class="config">
       <div class="row">
-        <label for="background" class="col-md-1">Background:</label>
-        <div class="col-md-11">
+        <label class="col-md-1" for="background">Background:</label>
+        <div class="col-md-8">
           <input type="text" class="form-control" id="background" [(ngModel)]="item.background" name="background">
         </div>
       </div>
       <div class="row">
-        <label class="col-md-1">Type:</label>
+        <label class="col-md-1" for="location">Locations:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="location">
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-sm btn-success">Create Weather</button>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-1" for="imageUrl">Image Url:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="imageUrl" #imageUrl>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-sm btn-success" (click)="generateImg(imageUrl.value)">Create Image</button>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-1" for="youtubeId">Youtube Id:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="youtubeId" #youtubeId>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-sm btn-success" (click)="generateYoutube(youtubeId.value)">Create Youtube</button>
+        </div>
       </div>
     </div>
-    <div class="content ">
+    <div class="content">
       <div class="row">
         <label class="col-md-1">Content:</label>
       </div>
       <textarea [(ngModel)]="item.content" name="content"></textarea>
-    </div>
-    <div *ngIf="weatherView" class="content">
-      <input type="text" class="form-control">
     </div>
     <button class="btn btn-sm btn-primary edit-button" type="submit">Save</button>
   </form>

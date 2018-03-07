@@ -15,7 +15,7 @@
 
 .config {
   margin: 5px 0;
-  height: 100px;
+  height: auto;
 }
 
 button {
@@ -23,11 +23,11 @@ button {
 }
 
 .content {
-  height: 650px;
+  height: 600px;
 }
 
 textarea {
-  height: 600px;
+  height: 550px;
   width: 100%;
   resize: none;
   border-radius: 5px;
@@ -43,4 +43,8 @@ textarea {
 .cancel-button, .edit-button {
   bottom: 0;
   float: right;
+}
+
+.form-control {
+  margin-bottom: 5px;
 }

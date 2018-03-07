@@ -18,8 +18,18 @@ export class EditContentComponent implements OnInit {
   @Input() item;
   @Input() visible: boolean;
 
-  weatherView = false;
-  htmlView = true;
+  defaultData: any;
+  imgUrl: string = '';
+  youtubeId: string = '';
+
+  imgString: string = '';
+  youtubeString: string = '';
+  youtubeStringHead =`
+  <div style="width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+      <iframe src="https://www.youtube.com/embed/`
+  youtubeStringTail =`?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+    </iframe>
+  </div>`
 
   constructor(
     private dashboardService: DashboardService
@@ -28,26 +38,32 @@ export class EditContentComponent implements OnInit {
   ngOnInit() {
   }
 
-  weather() {
-    this.weatherView = true;
-    this.htmlView = false;
-  }
-
-  html() {
-    this.weatherView = false;
-    this.htmlView = true;
-  }
-
   // close popup
+  // return back item content as default
   close(): void {
+    this.dashboardService.getItem(this.page, this.item.key)
+      .subscribe(data => {
+        this.defaultData = data
+        this.item.content = this.defaultData.content;
+      });
     this.visible = false;
-    // this.weatherView = false;
   }
 
   // edit content of item and send to dashboardService to handle
   editItem(item: Item): void {
     this.dashboardService.editItem(this.page, item);
     this.visible = false;
-    this.weatherView = false;
+  }
+
+  generateImg(imgUrl: string) {
+    this.imgString = '<img src="' + imgUrl + '" alt="Image">';
+    this.item.content += this.imgString;
+    this.imgString = '';
+  }
+
+  generateYoutube(youtubeId: string) {
+    this.youtubeString = this.youtubeStringHead + youtubeId + this.youtubeStringTail;
+    this.item.content += this.youtubeString;
+    this.youtubeString = '';
   }
 }
