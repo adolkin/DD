@@ -27,6 +27,8 @@ export class Page1ViewComponent implements OnInit {
   page: string = '/page1';
   navigationTime: number;
 
+  background: any;
+
   constructor(
     private dashboardService: DashboardService,
     private settingService: SettingService,
@@ -38,6 +40,7 @@ export class Page1ViewComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.createOptions();
+    this.getBackground();
   }
 
   // Create Grid option https://github.com/tiberiuzuld/angular-gridster2
@@ -86,6 +89,14 @@ export class Page1ViewComponent implements OnInit {
         this.route = setTimeout((router: Router) => {
           this.router.navigate(['view/page2']);
         }, this.navigationTime);
+      });
+  }
+
+  getBackground() {
+    this.settingService.getBackground('page1Background')
+      .subscribe(data => {
+        console.log(data);
+        this.background = data;
       });
   }
 }

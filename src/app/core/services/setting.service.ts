@@ -20,7 +20,7 @@ export class SettingService {
 
   // Get background for each page
   getBackground(page: string) {
-    return this.db.list('/setting/' + page).valueChanges();
+    return this.db.object('/setting/' + page).valueChanges();
   }
 
   // Set backgound for each page
