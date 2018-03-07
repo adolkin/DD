@@ -1,5 +1,5 @@
 <gridster [options]="options" [ngStyle]="{'background-image': 'url(' + background + ')'}">
-    <gridster-item [item]="item" *ngFor="let item of items">
+    <gridster-item [item]="item" *ngFor="let item of items" [ngStyle]="{'background-image': 'url(' + item.background + ')'}">
       <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
       </div>
     </gridster-item>

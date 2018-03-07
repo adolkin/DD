@@ -13,11 +13,9 @@
   box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
 }
 
-.navigate {
+.config {
   margin: 5px 0;
-  .edit {
-    float: right;
-  }
+  height: 200px;
 }
 
 button {
@@ -25,13 +23,15 @@ button {
 }
 
 .content {
-  height: 800px;
+  height: 550px;
 }
 
 textarea {
-  height: 750px;
+  height: 500px;
   width: 100%;
   resize: none;
+  border-radius: 5px;
+  border-color: lightgrey;
 }
 
 .weather {
@@ -40,3 +40,7 @@ textarea {
   border: 1px solid black;
 }
 
+.cancel-button, .edit-button {
+  bottom: 0;
+  float: right;
+}

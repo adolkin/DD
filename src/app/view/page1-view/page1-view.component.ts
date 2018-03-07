@@ -95,7 +95,6 @@ export class Page1ViewComponent implements OnInit {
   getBackground() {
     this.settingService.getBackground('page1Background')
       .subscribe(data => {
-        console.log(data);
         this.background = data;
       });
   }

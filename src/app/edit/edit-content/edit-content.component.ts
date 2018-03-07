@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '@services/dashboard.service';
 import { popupAnimation } from '@animations/popup.animations';
 
+import { Item } from '@shared/models/item';
+
 @Component({
   selector: 'app-edit-content',
   templateUrl: './edit-content.component.html',
@@ -39,14 +41,12 @@ export class EditContentComponent implements OnInit {
   // close popup
   close(): void {
     this.visible = false;
-    this.weatherView = false;
+    // this.weatherView = false;
   }
 
   // edit content of item and send to dashboardService to handle
-  editItem(text: any): void {
-    console.log(text);
-    this.item.content = text;
-    this.dashboardService.editItem(this.page, this.item);
+  editItem(item: Item): void {
+    this.dashboardService.editItem(this.page, item);
     this.visible = false;
     this.weatherView = false;
   }

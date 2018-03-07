@@ -16,9 +16,9 @@ export class AuthGuardService implements CanActivate {
     return this.checkLogin(url);
   }
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.canActivate(route, state);
-  }
+  // canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  //   return this.canActivate(route, state);
+  // }
 
   checkLogin(url: string): boolean {
     if (localStorage.getItem('user')) {

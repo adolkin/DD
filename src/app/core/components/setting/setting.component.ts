@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '@services/auth.service';
 import { SettingService } from '@services/setting.service';
-import { Setting } from '@models/setting';
 
 @Component({
   selector: 'app-setting',
@@ -51,7 +50,7 @@ export class SettingComponent implements OnInit {
     this.settingService.getSetting()
       .subscribe(setting => {
         this.setting = setting;
-        console.log(this.setting);
+        // console.log(this.setting);
         this.navigationTime = <number>this.setting.navigationTime / 1000;
         this.page1Background = this.setting.page1Background;
         this.page2Background = this.setting.page2Background;      

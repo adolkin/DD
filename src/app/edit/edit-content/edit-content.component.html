@@ -1,19 +1,27 @@
 <div [@dialog] *ngIf="visible" class="dialog">
-  <div class="navigate">
-    <button class="btn btn-sm" (click)="html()">HTML</button>
-    <button class="btn btn-sm" (click)="weather()">Weather</button>
-    <button class="btn btn-sm edit" (click)="close()">Cancel</button>
-    <button class="btn btn-sm btn-danger edit" (click)="editItem(text.value)">Save</button>
-  </div>
-  <div class="content">
-    <!-- <ng-container *ngIf="htmlView"> -->
-    <textarea [innerHTML]="item.content" #text>
-    </textarea>
-    <!-- </ng-container> -->
+  <form #itemForm="ngForm" (ngSubmit)="editItem(item)">
+    <div class="config">
+      <div class="row">
+        <label for="background" class="col-md-1">Background:</label>
+        <div class="col-md-11">
+          <input type="text" class="form-control" id="background" [(ngModel)]="item.background" name="background">
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-1">Type:</label>
+      </div>
 
-
-  </div>
-  <div *ngIf="weatherView" class="content">
-    <input type="text" class="form-control">
-  </div>
+    </div>
+    <div class="content ">
+      <div class="row">
+        <label class="col-md-1">Content:</label>
+      </div>
+      <textarea [(ngModel)]="item.content" name="content"></textarea>
+    </div>
+    <div *ngIf="weatherView" class="content">
+      <input type="text" class="form-control">
+    </div>
+    <button class="btn btn-sm btn-primary edit-button" type="submit">Save</button>
+    <button class="btn btn-sm cancel-button" (click)="close()">Cancel</button>
+  </form>
 </div>

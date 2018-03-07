@@ -17,7 +17,7 @@ export class Page2EditComponent implements OnInit {
   selectedItem: Item;
 
   page: string = '/page2';
-
+  
   constructor(
     private dashboardService: DashboardService
   ) { }
@@ -87,13 +87,14 @@ export class Page2EditComponent implements OnInit {
 
   // Right click to add new item
   emptyCellClick(event: MouseEvent, item: GridsterItem) {
-    //console.info('empty cell click', event, item);
+    console.info('empty cell click', event, item);
     let newItem: any = {
       content: ``,
       rows: 1,
       cols: 1,
       x: item.x,
-      y: item.y
+      y: item.y,
+      background: ``,
     }
     //console.log(newItem);
     this.dashboardService.addItem(this.page, newItem);
@@ -103,22 +104,24 @@ export class Page2EditComponent implements OnInit {
   getAll(): void {
     this.dashboardService.getAll(this.page)
       .subscribe(items => {
+        console.log(items);
         this.items = items;
-      })
-  }
+  })
+}
 
-  //Delete Item
-  removeItem($event, item) {
-    this.dashboardService.removeItem(this.page, item);
-  }
+//Delete Item
+removeItem($event, item) {
+  this.dashboardService.removeItem(this.page, item);
+}
 
-  //Select Item 
-  onSelect(item: Item): void {
-    this.selectedItem = item;
-  }
+//Select Item 
+onSelect(item: Item): void {
+  this.selectedItem = item;
+  console.log(this.selectedItem);
+}
 
-  //trackBy ngFor
-  trackByItems(index: number, item: Item) {
-    return item.content;
-  }
+//trackBy ngFor
+trackByItems(index: number, item: Item) {
+  return item.content;
+}
 }
