@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule  } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridsterModule } from 'angular-gridster2';
 import { RouterModule } from '@angular/router';
+
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { WeatherComponent } from './components/weather/weather.component';
 
@@ -15,7 +16,8 @@ import { WeatherComponent } from './components/weather/weather.component';
     HttpClientModule,
     BrowserAnimationsModule,
     GridsterModule,
-    RouterModule
+    RouterModule,
+    HttpClientJsonpModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -28,6 +30,7 @@ import { WeatherComponent } from './components/weather/weather.component';
     BrowserAnimationsModule,
     GridsterModule,
     RouterModule,
+    HttpClientJsonpModule,
     SafeHtmlPipe,
     WeatherComponent
   ]

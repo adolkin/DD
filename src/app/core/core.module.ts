@@ -6,6 +6,7 @@ import { WeatherService } from '@services/weather.service';
 import { AuthGuardService } from '@services/auth-guard.service';
 import { AuthService } from '@services/auth.service';
 import { SettingService } from '@services/setting.service';
+import { LocationService } from '@services/location.service';
 
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { SettingComponent } from './components/setting/setting.component';
@@ -23,7 +24,8 @@ import { SettingComponent } from './components/setting/setting.component';
     WeatherService,
     AuthService,
     AuthGuardService,
-    SettingService
+    SettingService,
+    LocationService
   ]
 })
 export class CoreModule { }
