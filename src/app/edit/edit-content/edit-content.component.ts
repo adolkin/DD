@@ -44,8 +44,8 @@ export class EditContentComponent implements OnInit {
   ngOnInit() {
   }
 
-  // close popup
-  // return back item content as default
+  // Close popup
+  // Return back item content as default
   close(): void {
     this.dashboardService.getItem(this.page, this.item.key)
       .subscribe(data => {
@@ -55,7 +55,7 @@ export class EditContentComponent implements OnInit {
     this.visible = false;
   }
 
-  // edit content of item and send to dashboardService to handle
+  // Edit content of item and send to dashboardService to handle
   editItem(item: Item): void {
     this.dashboardService.editItem(this.page, item);
     this.visible = false;
