@@ -29,7 +29,7 @@ export class SettingComponent implements OnInit {
 
   getUser() {
     this.userName = localStorage.getItem('user');
-    console.log(this.userName);
+    // console.log(this.userName);
   }
 
   logout() {
