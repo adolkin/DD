@@ -55,14 +55,16 @@ textarea {
   background-color: #fff;
   margin-top: -6px;
   margin-left: 2px;
-  width: 96.3%;
+  width: inherit;
   box-shadow: 0px 3px 3px 3px #aaaaaa;
+  font-size: large;
   li {
     cursor: pointer;
     list-style-type: none;
   }
   li:hover {
-    background-color: #607D8B;
+    background-color: rgba(70, 88, 192, 0.582);
+    color: #fff;
   }
   #region {
     float: right;

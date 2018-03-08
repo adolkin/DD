@@ -29,12 +29,17 @@ export class EditContentComponent implements OnInit {
 
   imgString: string = '';
   youtubeString: string = '';
+  weatherString: string = '';
+
+  imgStringHead = `
+  <img src="`;
+  imgStringTail = '" alt="Image">';
   youtubeStringHead = `
   <div style="width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-      <iframe src="https://www.youtube.com/embed/`
-  youtubeStringTail = `?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+      <iframe src="https://www.youtube.com/embed/`;
+  youtubeStringTail = `?autoplay=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
     </iframe>
-  </div>`
+  </div>`;
 
   constructor(
     private dashboardService: DashboardService,
@@ -53,6 +58,8 @@ export class EditContentComponent implements OnInit {
         this.item.content = this.defaultData.content;
       });
     this.visible = false;
+    this.location.nativeElement.value = '';
+    this.displaySearch = false;
   }
 
   // Edit content of item and send to dashboardService to handle
@@ -62,7 +69,7 @@ export class EditContentComponent implements OnInit {
   }
 
   generateImg(imgUrl: string) {
-    this.imgString = '<img src="' + imgUrl + '" alt="Image">';
+    this.imgString = this.imgStringHead + imgUrl + this.imgStringTail;
     this.item.content += this.imgString;
     this.imgString = '';
   }

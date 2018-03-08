@@ -1,7 +1,6 @@
-<gridster [options]="options" [ngStyle]="{'background-image': 'url(' + background + ')'}">
-    <gridster-item [item]="item" *ngFor="let item of items" [ngStyle]="{'background-image': 'url(' + item.background + ')'}">
-      <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
-      </div>
-    </gridster-item>
-  </gridster>
-  
+<gridster [options]="options" [ngStyle]="{'background-image': background? 'url(' + background + ')': none}">
+  <gridster-item [item]="item" *ngFor="let item of items" [ngStyle]="{'background-image': item.background? 'url(' + item.background + ')': none}">
+    <div *ngIf="item.content" [innerHTML]="item.content | safeHtml" class="item">
+    </div>
+  </gridster-item>
+</gridster>
