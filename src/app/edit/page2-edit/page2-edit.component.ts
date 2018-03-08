@@ -17,7 +17,7 @@ export class Page2EditComponent implements OnInit {
   selectedItem: Item;
 
   page: string = '/page2';
-  
+
   constructor(
     private dashboardService: DashboardService
   ) { }
@@ -104,24 +104,22 @@ export class Page2EditComponent implements OnInit {
   getAll(): void {
     this.dashboardService.getAll(this.page)
       .subscribe(items => {
-        console.log(items);
         this.items = items;
-  })
-}
+      })
+  }
 
-//Delete Item
-removeItem($event, item) {
-  this.dashboardService.removeItem(this.page, item);
-}
+  //Delete Item
+  removeItem($event, item) {
+    this.dashboardService.removeItem(this.page, item);
+  }
 
-//Select Item 
-onSelect(item: Item): void {
-  this.selectedItem = item;
-  console.log(this.selectedItem);
-}
+  //Select Item 
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+  }
 
-//trackBy ngFor
-trackByItems(index: number, item: Item) {
-  return item.content;
-}
+  //trackBy ngFor
+  trackByItems(index: number, item: Item) {
+    return item.content;
+  }
 }

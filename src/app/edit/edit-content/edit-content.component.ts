@@ -124,7 +124,6 @@ src="https://www.willyweather.com.au/widget/preview.html?template=outFrame
       this.locationService.searchLocation(term)
         .subscribe(locations => {
           this.locations$ = locations;
-          console.log(this.locations$);
           this.displaySearch = true;
         });
     }
@@ -149,18 +148,13 @@ src="https://www.willyweather.com.au/widget/preview.html?template=outFrame
   }
 
   generateWeather() {
-    // console.log(this.selectedLocation);
-    // console.log(this.selectedLocation.name);
-    // console.log(this.selectedLocation.name.replace(/ /g,"+"));
     this.weatherString = this.weatherStringHead + this.selectedLocation.name.replace(/ /g, "+") +
       `
 &widget%5Blocations%5D%5B0%5D%5BdisplayName%5D=` + this.selectedLocation.name.replace(/ /g, "+") +
       `
 &widget%5Blocations%5D%5B0%5D%5Bid%5D=`+ this.selectedLocation.id +
       `
-&widget%5Blocations%5D%5B0%5D%5BtypeId%5D=`+ this.selectedLocation.typeId +
-      this.weatherStringTail;
-    console.log(this.weatherString);
+&widget%5Blocations%5D%5B0%5D%5BtypeId%5D=`+ this.selectedLocation.typeId + this.weatherStringTail;
     this.item.content += this.weatherString;
   }
 }

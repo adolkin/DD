@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { SettingService } from '@services/setting.service';
 
+import { Time, TIMES } from '@models/time';
+
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
@@ -17,6 +19,8 @@ export class SettingComponent implements OnInit {
   page2Background: string = '';
   updateStatus: string = '';
   userName: any;
+
+  times = TIMES;
 
   constructor(
     private settingService: SettingService,
