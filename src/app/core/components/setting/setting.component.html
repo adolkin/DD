@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-fluid">
   <div class="jumbotron">
     <h4>Welcome {{userName}}
       <a href="#" (click)="logout()">Logout</a>
     </h4>
-    <button class="btn btn-default" (click)="openEdit()">Edit Mode</button>
-    <button class="btn btn-default" (click)="openView()">View Mode</button>
+    <button class="btn btn-info" (click)="openEdit()">Edit Mode</button>
+    <button class="btn btn-info" (click)="openView()">View Mode</button>
 
     <div [hidden]="hideEdit" class="form-horizontal edit">
       <form #formData='ngForm' (ngSubmit)="setSetting(formData)">
@@ -34,23 +34,49 @@
         </div>
         <div class="table-responsive">
           <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>Page1</th>
-                <th>Page2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let time of times">
-                <td>{{time.fromTo}}</td>
-                <td></td>
-                <td></td>
-              </tr> 
-            </tbody>
+            <tr>
+              <td>
+                <b>From - To </b>
+              </td>
+              <ng-container *ngFor="let time of times">
+                <td style="text-align: center;">{{time.fromTo}}</td>
+              </ng-container>
+            </tr>
+            <tr>
+              <td>
+                <b>Page1</b>
+              </td>
+              <ng-container *ngFor="let page1Time of displayTime.page1; let i=index; trackBy:customTrackBy">
+                <td style="text-align: center;">
+                  <input type="checkbox" [(ngModel)]="displayTime.page1[i]" name="displayTime.page1From{{[i]}}" />
+                </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <td>
+                <b>Page2</b>
+              </td>
+              <ng-container *ngFor="let page2Time of displayTime.page2; let j=index; trackBy:customTrackBy">
+                <td style="text-align: center;">
+                  <input type="checkbox" [(ngModel)]="displayTime.page2[j]" name="displayTime.page2From{{[j]}}" />
+                </td>
+              </ng-container>
+            </tr>
           </table>
         </div>
-        <button class="btn btn-primary setting-button" type="submit">Save Settings</button>
+        <div class="row">
+          <span class="col-md-9"></span>
+          <div class="col-md-2">
+            <button class="btn btn-primary setting-button" type="button" (click)="change(pageTime.value)">Test</button>
+            <button class="btn btn-primary setting-button" type="submit">Save Settings</button>
+          </div>
+          <div class="col-md-1">
+            <img *ngIf="loading" class="loading">
+            <span style="color: green; font-size: large">
+              <b>{{updateStatus}}</b>
+            </span>
+          </div>
+        </div>
       </form>
     </div>
   </div>

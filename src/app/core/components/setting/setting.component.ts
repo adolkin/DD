@@ -14,12 +14,15 @@ export class SettingComponent implements OnInit {
 
   setting: any;
   hideEdit = true;
-  navigationTime: any;
+  navigationTime: number;
   page1Background: string = '';
   page2Background: string = '';
+  displayTime: any[] = [];
+  page1DisplayTime: any[]= [];  
+  page2DisplayTime: any[]= [];  
   updateStatus: string = '';
-  userName: any;
-
+  userName: string;
+  loading = false;
   times = TIMES;
 
   constructor(
@@ -42,26 +45,48 @@ export class SettingComponent implements OnInit {
 
   // Open View Mode in new tab
   openView() {
-    var newWindow = window.open('/view');
+    var newWindow = window.open('/view', "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, width=1600, height=800");
   }
 
   // Hide/show Edit Mode
   openEdit() {
     this.hideEdit = this.hideEdit === true ? false : true;
-  }
+  }  
 
   getSetting() {
     this.settingService.getSetting()
       .subscribe(setting => {
         this.setting = setting;
-        // console.log(this.setting);
+        console.log(this.setting);
         this.navigationTime = <number>this.setting.navigationTime / 1000;
         this.page1Background = this.setting.page1Background;
-        this.page2Background = this.setting.page2Background;      
-      })
+        this.page2Background = this.setting.page2Background;
+
+        this.displayTime = this.setting.displayTime;
+        this.page1DisplayTime = this.setting.displayTime.page1;
+        this.page2DisplayTime = this.setting.displayTime.page2;
+        console.log(this.displayTime);
+        console.log('page1Time:' + this.page1DisplayTime);
+        console.log('page2Time:' + this.page2DisplayTime);
+      });
   }
 
   setSetting(formData) {
-    this.settingService.setSetting(formData);
+    console.log(formData);
+    // this.loading = true;
+    // this.updateStatus = '';
+    // this.settingService.setSetting(formData)
+    //   .then(res => {
+    //     this.loading = false;
+    //     this.updateStatus = "UPDATED!"
+    //   });
+  }
+
+  change(value: any){
+    console.log(value);
+  }
+
+  customTrackBy(index: number, obj: any): any {
+    return  index;
   }
 }
