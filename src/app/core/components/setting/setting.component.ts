@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Time, TIMES } from '@models/time';
 import { AuthService } from '@services/auth.service';
 import { SettingService } from '@services/setting.service';
-
-import { Time, TIMES } from '@models/time';
+import { TimeGuardService } from '@services/time-guard.service';
 
 @Component({
   selector: 'app-setting',
@@ -25,7 +25,8 @@ export class SettingComponent implements OnInit {
 
   constructor(
     private settingService: SettingService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private timeGuardServuce: TimeGuardService) { }
 
   ngOnInit() {
     this.getUser();

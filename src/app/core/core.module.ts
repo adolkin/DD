@@ -3,6 +3,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { DashboardService } from '@services/dashboard.service';
 import { AuthGuardService } from '@services/auth-guard.service';
+import { TimeGuardService } from '@services/time-guard.service';
 import { AuthService } from '@services/auth.service';
 import { SettingService } from '@services/setting.service';
 import { LocationService } from '@services/location.service';
@@ -22,6 +23,7 @@ import { SettingComponent } from './components/setting/setting.component';
     DashboardService,
     AuthService,
     AuthGuardService,
+    TimeGuardService,
     SettingService,
     LocationService
   ]
