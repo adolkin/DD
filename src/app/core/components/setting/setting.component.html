@@ -48,7 +48,7 @@
               </td>
               <ng-container *ngFor="let page1Time of displayTime.page1; let i=index; trackBy:customTrackBy">
                 <td style="text-align: center;">
-                  <input type="checkbox" [(ngModel)]="displayTime.page1[i]" name="displayTime.page1From{{[i]}}" />
+                  <input type="checkbox" [(ngModel)]="displayTime.page1[i]" name="page1From{{[i]}}" />
                 </td>
               </ng-container>
             </tr>
@@ -58,7 +58,7 @@
               </td>
               <ng-container *ngFor="let page2Time of displayTime.page2; let j=index; trackBy:customTrackBy">
                 <td style="text-align: center;">
-                  <input type="checkbox" [(ngModel)]="displayTime.page2[j]" name="displayTime.page2From{{[j]}}" />
+                  <input type="checkbox" [(ngModel)]="displayTime.page2[j]" name="page2From{{[j]}}" />
                 </td>
               </ng-container>
             </tr>
@@ -67,7 +67,6 @@
         <div class="row">
           <span class="col-md-9"></span>
           <div class="col-md-2">
-            <button class="btn btn-primary setting-button" type="button" (click)="change(pageTime.value)">Test</button>
             <button class="btn btn-primary setting-button" type="submit">Save Settings</button>
           </div>
           <div class="col-md-1">

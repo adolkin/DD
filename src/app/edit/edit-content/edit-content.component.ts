@@ -43,7 +43,7 @@ export class EditContentComponent implements OnInit {
 </div>`;
 
   weatherStringHead = `
-<iframe style="display: block;" width="100%" height="520" frameborder="0"  scrolling="no" 
+<iframe style="display: block;" width="100%" height="530" frameborder="0"  scrolling="no" 
 src="https://www.willyweather.com.au/widget/preview.html?template=outFrame
 &sid=mr25v9co7u7pq194trk6gknaa4
 &widget%5Bcolour%5D=%23eeeeee
@@ -53,44 +53,8 @@ src="https://www.willyweather.com.au/widget/preview.html?template=outFrame
 &widget%5BwidgetHeaderType%5D=1
 &widget%5Blocations%5D%5B0%5D%5Bname%5D=`;
   weatherStringTail = `
-&widget%5Blocations%5D%5B1%5D%5Bname%5D=
-&widget%5Blocations%5D%5B1%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B1%5D%5Bid%5D=
-&widget%5Blocations%5D%5B1%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B2%5D%5Bname%5D=
-&widget%5Blocations%5D%5B2%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B2%5D%5Bid%5D=
-&widget%5Blocations%5D%5B2%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B3%5D%5Bname%5D=
-&widget%5Blocations%5D%5B3%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B3%5D%5Bid%5D=
-&widget%5Blocations%5D%5B3%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B4%5D%5Bname%5D=
-&widget%5Blocations%5D%5B4%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B4%5D%5Bid%5D=
-&widget%5Blocations%5D%5B4%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B5%5D%5Bname%5D=
-&widget%5Blocations%5D%5B5%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B5%5D%5Bid%5D=
-&widget%5Blocations%5D%5B5%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B6%5D%5Bname%5D=
-&widget%5Blocations%5D%5B6%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B6%5D%5Bid%5D=
-&widget%5Blocations%5D%5B6%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B7%5D%5Bname%5D=
-&widget%5Blocations%5D%5B7%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B7%5D%5Bid%5D=
-&widget%5Blocations%5D%5B7%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B8%5D%5Bname%5D=
-&widget%5Blocations%5D%5B8%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B8%5D%5Bid%5D=
-&widget%5Blocations%5D%5B8%5D%5BtypeId%5D=
-&widget%5Blocations%5D%5B9%5D%5Bname%5D=
-&widget%5Blocations%5D%5B9%5D%5BdisplayName%5D=
-&widget%5Blocations%5D%5B9%5D%5Bid%5D=
-&widget%5Blocations%5D%5B9%5D%5BtypeId%5D=
 &widget%5Bwidth%5D=700
-&widget%5Bheight%5D=520"></iframe>`
+&widget%5Bheight%5D=530"></iframe>`
 
   constructor(
     private dashboardService: DashboardService,
